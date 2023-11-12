@@ -7,3 +7,4 @@ matplotlib
 tensorflow
 re
 json
+gunicorn
