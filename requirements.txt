@@ -1,0 +1,9 @@
+Flask
+sklearn
+numpy
+pickle-mixin
+pandas
+matplotlib
+tensorflow
+re
+json
