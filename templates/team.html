@@ -1,0 +1,145 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Text Generation {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto"><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto "><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto "><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto active"><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+<main id="main">
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container" data-aos="fade-up">
+  <br><br>
+            <div class="section-title ">
+                <h2 class="prediction-output">Meet our Team</h2>
+                <p style="color: #c9c9c9"> The team members are from West Visayas State University.
+                Students from College of Information and Communications Technology. Artificial Intelligence Track. </p>
+                </p>
+                
+          
+          
+          
+              </div>
+            
+          <div class="row gy-4">
+  
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-delay="100">
+              <div class="team-member">
+                <div class="member-img">
+                  <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/334314025_8942116535830504_3318795937189187131_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_eui2=AeFffASZHoVUL-Eth1CDG_4Nq8Mz7u8-ojmrwzPu7z6iOd2iy9kOOJomPz76u9nfq3pqNp8JfPxkf73zJiSC__1C&_nc_ohc=Bamv8MCIDc0AX8sbAyo&_nc_ht=scontent.fceb2-2.fna&oh=00_AfBm_x-8aZKBOwAwlZgfXVOkgIx1V-knFntktq_qyqRqeQ&oe=647EDA53" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Jeno Bellido</h4>
+                  <span> Team Leader</span>
+                </div>
+                <br>
+              </div>
+            </div><!-- End Team Member -->
+  
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-delay="200">
+              <div class="team-member">
+                <div class="member-img">
+                  <img src="https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/326982008_591968388935995_955273580285571035_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_eui2=AeEiCBobYyzj7iTDW4arSJGiRocPp7KsyYRGhw-nsqzJhOnqF6lS-Htl6tVQ7L-kTYF42-d_TzDMJKvr5G6Vf2x0&_nc_ohc=Hk5XUgjSz_wAX8SGfQL&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfDoASwtAxr3zh-zeVLoJZrVVjBGrGPGzF3ASzx3B5LC8Q&oe=647E87C4" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Rey Anne Destua</h4>
+                  <span>Team Member</span>
+                </div>
+                <br>
+              </div>
+            </div><!-- End Team Member -->
+  
+  
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-delay="400">
+              <div class="team-member">
+                <div class="member-img">
+                  <img src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/333118287_980236939625246_3670818429792383411_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFxgbzq5SUx8LV5vxpofNGfnI3Junm-kOOcjcm6eb6Q4yoY2esgUIUZaDIf6pb08FOXR-TM9jypx3150gp0JLVX&_nc_ohc=-KDuQGjwnBQAX_PTwo6&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfADD2amxvHtA9aJJghpzOQjMOWZRoLib-YT6vSUoq9p2w&oe=647F1370" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Ariane Marie Lavilla</h4>
+                  <span>Team Member</span>
+                </div>
+                <br>
+              </div>
+            </div><!-- End Team Member -->
+  
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-delay="300">
+              <div class="team-member">
+                <div class="member-img">
+                  <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t1.6435-9/159841055_1820104584833996_3483238267451664192_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_eui2=AeH2ItZULfp9kRM4SkBdB82WRDtOhgfeY5VEO06GB95jlZOd7SpkxOkMyqjC7FRHvdRdG8ar3dnYKq59d32evXXc&_nc_ohc=toDWBvYReqkAX-XiiVE&_nc_ht=scontent.fceb2-2.fna&oh=00_AfChnxMYfH3FKaXP5tnwyGpG8suuCPyskWhmetdgB-xmgg&oe=64A0C92D" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>John Cairo Minerva</h4>
+                  <span>Team Member</span>
+                </div>
+                <br>
+              </div>
+            </div><!-- End Team Member -->
+
+          </div>
+  
+        </div>
+      </section><!-- End Team Section -->
+    </main>
+    <br><br>
+    
+{% endblock %}
+
+</body>
+
+</html>

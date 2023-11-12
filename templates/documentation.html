@@ -1,0 +1,560 @@
+{% extends 'base.html' %}
+{% block title %}  Documentation {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto"><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">  GAUSSIAN NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('bernoulliNB')}}" class="nav-link scrollto"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">  BERNOULLI NAIVES BAYES</span></a></li>
+        <li><a href="{{ url_for('multinomialNB')}}" class="nav-link scrollto"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">  MULTINOMIAL NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto"><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto"><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('documentation')}}" class="nav-link scrollto active"><i class="bi bi-book"></i> <span style="margin-left: 7px;"> DOCUMENTATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p>Documentation </p>
+        <div class="desc-container">
+        <p class="desc">This content serves as a documentation of various machine learning classifiers (KNN, Naive Bayes) and clustering algortihm (K-Means)
+
+        </p>
+      </div>
+     
+        
+      <a href="#about"> <button class="campaign-button"> See Documentation </button></a>
+
+
+    </div>
+  </section><!-- End Hero -->
+
+  <section id="analysis" >
+    <div class="container" >
+
+    
+
+      <div class="row">
+
+
+         <div class="accordion col-lg-12 col-md-12 col-sm-12 px-4 col-12 p-4" id="accordionExample">
+          
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                &nbsp; K-Nearest Neighbor
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+              <div class="accordion-body">
+                <div class="course-topic">
+                    <h5> Course Topic  </h5>
+                
+                    <p> K-Nearest Neighbor implementation using the data scraped from Indeed to classify jobs.</p>
+                  </div>
+                  
+                  <div class="data">
+                    <h5> Data  </h5>
+                
+                    <p> The dataset used in this implementation is the data scraped from Indeed.     </p>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HcPykHEC8zY1RQ7lq8MylkApyo3fxp9aQYL133joZe8/edit?usp=sharing">
+                        <button >View dataset</button>
+                    </a>
+                    <br> <br>
+                    <p>There are over 209 instances. The dataset contains the following features: Job_Title, Company, Experience_Required, and Salary.
+                    </p>
+
+                    <ul>
+                        <li>Job_Title (categorical, int)</li>
+                        <li>Company (categorical, string)</li>
+                        <li>Experience_Required (numerical, float)</li>
+                        <li>Salary (numerical, float)</li>
+                    </ul>
+                  </div>
+
+                  <div class="problem-statement">
+                    <h5> Problem Statement  </h5>
+                    <p>
+                        The activity is focused on developing a machine learning model using the K-Nearest Neighbor (KNN) algorithm to classify jobs based on features such as Job_Title, Company, Experience_Required, and Salary. The dataset used was gathered by web scraping from Indeed, which is a popular job search engine. The target variable is the Job_Title, while the features such as Experience_Required, and Salary are used as predicting variables. <br><br>
+
+                Overall, the program has significant potential in creating a useful and practical job classification system using machine learning. By accurately classifying jobs based on the given features, the system can help job seekers find suitable job opportunities quickly and help employers find suitable candidates for job openings.
+
+
+                    </p>
+                  </div>
+
+                  <div class="method-evaluation">
+                    <h5> Method / Evaluation  </h5>
+                    <p>
+                      The analysis we had during the process of conducting the activity is that we should have an understanding of the steps involved in building and evaluating the python program. <br> <br>
+                      Initially, the group used the dataset scraped from Indeed. With 209 instances and features Job_Title, Company, Experience_Required, and Salary. The group then started by reading items in the dataset. Since the goal of the activity is to classify jobs, Job_Title was made the target variable. Job_Title has the following classes (1, 2, 3), 1 = Junior, 2 = Senior, and 3 = Project manager. Moreover, Experience_Required and Salary were made the predicting variables and not considering the column of Company. <br><br>
+                      In model building, after reading the dataset, the Company column is dropped since it has nothing to do with predicting the job title. Moreover, considering it as one of the predicting variables will result in a decrease in classifier performance. <br><br>
+                      To continue, the dataset was divided into training and testing sets. In this case, the training set is 80%, leaving the testing set with 20%. After dividing the dataset, the KNN classifier was made. Now that the classifier was made, the classifier is dumped into pickle which is used to serialize (i.e., convert to a binary format that can be stored or transmitted) the classifier and write it to our desired file which we can call our model.  <br><br>
+                     
+                      For flask implementation, which is a popular Python web framework that allows developers to quickly build web applications. A python code was made to connect the HTML file which is where the user interacts, and the model for the functionality of classification. The python code works by getting the input from a user through HTML (forms) and processing the input and making the classification by using the model. Finally, the classification output will be sent back to the user. Instead of the output such as 1, 2, and 3 which are the classes of the target variable Job_Title. A code was made to send the appropriate output.  1 = Junior, 2 = Senior, and 3 = Project manager.
+
+
+                        <br>
+                    </p>
+                    <img src="/static/img/if-else.png" class="img-fluid" alt="">
+                    <br><br>
+                 <p> If you want to view how we made the model, click the button below.
+                </p>  
+                    <a target="_blank" href="https://colab.research.google.com/drive/16D37gHYqivsZI1JzLtcVtX9tX1kHQlQ1?usp=sharing">
+                        <button >View Model</button>
+                    </a>
+                  </div>
+
+                  <div class="results">
+                    <h5> Results and Discussions      </h5>
+                    <p>
+                        The KNN model achieved an accuracy of 64.29% in predicting job titles based on the given dataset. The accuracy may seem low, but it is understandable as the dataset is relatively small with only 209 instances.
+                    <br><br>    The Flask implementation is successful in connecting the HTML file and the model for the functionality of classification. The output is user-friendly, with the appropriate output sent back to the user as Junior, Senior, or Project Manager.
+              The group's approach in model building is logical, starting with reading the dataset and dropping irrelevant columns to improve the classifier's performance. Overall, the project is a good start in building a job classification system using Python. There are still opportunities for improvement, but the group's approach is a solid foundation for future development.
+                    </p>
+              
+                    <a target="_blank" href="{{ url_for('knn_predict')}}">
+                        <button >View Output</button>
+                    </a>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <!-- NAIVE BAYES-->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                &nbsp; Naives Bayes 
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+              <div class="accordion-body">
+                <div class="course-topic">
+                    <h5> Course Topic  </h5>
+                
+                    <p> Naive Bayes (Gaussian, MultiNomial, & Bernoulli) implementation using the data scraped from Indeed to classify jobs.</p>
+                  </div>
+                  
+                  <div class="data">
+                    <h5> Data  </h5>
+                
+                    <p> The dataset used in this implementation is the data scraped from Indeed.     </p>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HcPykHEC8zY1RQ7lq8MylkApyo3fxp9aQYL133joZe8/edit?usp=sharing">
+                        <button >View dataset</button>
+                    </a>
+                    <br> <br>
+                    <p>There are over 209 instances. The dataset contains the following features: Job_Title, Company, Experience_Required, and Salary.
+                    </p>
+
+                    <ul>
+                        <li>Job_Title (categorical, int)</li>
+                        <li>Company (categorical, string)</li>
+                        <li>Experience_Required (numerical, float)</li>
+                        <li>Salary (numerical, float)</li>
+                    </ul>
+                  </div>
+
+                  <div class="problem-statement">
+                    <h5> Problem Statement  </h5>
+                    <p>
+                        The activity is focused on developing a machine learning model using Naive Bayes classifiers to classify jobs based on the features such as Job_Title, Company, Experience_Required, and Salary. The dataset used for the activity was gathered by web scraping from Indeed, which is a popular job search engine. The dataset includes features such as job title, company name, experience required, and salary. <br><br>
+
+                        The group used different Naive Bayes classifiers, such as Gaussian, Multinomial, and Bernoulli. Each of these classifiers has different assumptions about the distribution of the data and can be used for different types of data. <br><br>
+                        
+                        The target variable is the Job_Title, and the group will use the features such as Experience_Required, and Salary as predicting variables. Overall, the program has a significant potential in creating a useful and practical job classification system using machine learning. By accurately classifying jobs based on the given features, the system can help job seekers find suitable job opportunities quickly and help employers find suitable candidates for job openings.
+
+                    </p>
+                  </div>
+
+                  <div class="method-evaluation">
+                    <h5> Method / Evaluation  </h5>
+                    <p>
+                      The analysis we had during the process of conducting the activity is that we should have an understanding of the steps involved in building and evaluating the python program.<br><br>
+                      Initially, the group used the dataset scraped from Indeed. With 209 instances and features Job_Title, Company, Experience_Required, and Salary. The group then started by reading items in the dataset. Since the goal of the activity is to classify jobs, Job_Title was made the target variable. Job_Title has the following classes (1, 2, 3), 1 = Junior, 2 = Senior, and 3 = Project manager. Moreover, Experience_Required and Salary were made the predicting variables and not considering the column of Company.<br><br>
+                      In model building, after reading the dataset, the Company column is dropped since it has nothing to do with predicting the job title. Moreover, considering it as one of the predicting variables will result in a decrease in classifier performance. <br><br>
+                      To continue, the dataset was divided into training and testing sets. In this case, the training set is 75%, leaving the testing set with 25%. After dividing the dataset, the Naive Bayes classifiers namely Gaussian, MultiNomial, and Bernoulli were made, standardizing the data and hyperparameter tuning were implemented. Now that the classifier was made, the classifier is dumped into pickle which is used to serialize (i.e., convert to a binary format that can be stored or transmitted) the classifier and write it to our desired file which we can call our model. <br><br>
+                      For flask implementation, which is a popular Python web framework that allows developers to quickly build web applications. A python code was made to connect the HTML file which is where the user interacts, and the model for the functionality of classification. The python code works by getting the input from a user through HTML (forms) and processing the input and making the classification by using the model. Finally, the classification output will be sent back to the user. Instead of the output such as 1, 2, and 3 which are the classes of the target variable Job_Title. A code was made to send the appropriate output. 1 = Junior, 2 = Senior, and 3 = Project manager.
+                      
+                      
+                        <br>
+                    </p>
+                    <img src="/static/img/if-else.png" class="img-fluid" alt="">
+                    <br><br>
+                 <p> If you want to view how we made the model, click the button below.
+                </p>  
+                    <a target="_blank" href="https://drive.google.com/file/d/1euSVJmqM7HNPahFlp9sVoiqPshzh77gS/view?usp=sharing">
+                        <button >View Model</button>
+                    </a>
+                  </div>
+
+                  <div class="results">
+                    <h5> Results and Discussions      </h5>
+                    <p>
+                        Despite implementing standardizing the data and hyperparameter tuning, the Naive Bayes classifiers namely Gaussian, MultiNomial, and Bernoulli garnered low accuracy of 52%, 36%, and 45% accuracy scores respectively. The accuracies may seem low, but it is understandable as the dataset is relatively small with only 209 instances.
+                        It is also important to note that Naive Bayes assumes that each feature or attribute is independent of all other features, hence the name "naive". This simplifies the calculation of the probabilities, but in this case it led to inaccuracies because the assumption of independence is not true.<br><br>
+                        The Flask implementation is successful in connecting the HTML file and the model for the functionality of classification. The output is user-friendly, with the appropriate output sent back to the user as Junior, Senior, or Project Manager. The group's approach in model building is logical, starting with reading the dataset and dropping irrelevant columns to improve the classifier's performance. Overall, the project is a good start in building a job classification system using Python. There are still opportunities for improvement, but the group's approach is a solid foundation for future development.
+                        
+                    </p>
+              
+                    <a target="_blank" href="{{ url_for('gaussianNB')}}">
+                        <button >View Output</button>
+                    </a>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+                    <!-- K-MEANS-->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                &nbsp; K-MEANS 
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+              <div class="accordion-body">
+                <div class="course-topic">
+                    <h5> Course Topic  </h5>
+                
+                    <p> K-Means clustering implementation using the data scraped from Indeed to cluster data.</p>
+                  </div>
+                  
+                  <div class="data">
+                    <h5> Data  </h5>
+                
+                    <p> The dataset used in this implementation is the data scraped from Indeed.     </p>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HcPykHEC8zY1RQ7lq8MylkApyo3fxp9aQYL133joZe8/edit?usp=sharing">
+                        <button >View dataset</button>
+                    </a>
+                    <br> <br>
+                    <p>There are over 209 instances. The dataset contains the following features: Job_Title, Company, Experience_Required, and Salary.
+                    </p>
+
+                    <ul>
+                        <li>Job_Title (categorical, int)</li>
+                        <li>Company (categorical, string)</li>
+                        <li>Experience_Required (numerical, float)</li>
+                        <li>Salary (numerical, float)</li>
+                    </ul>
+                  </div>
+
+                  <div class="problem-statement">
+                    <h5> Problem Statement  </h5>
+                    <p>
+                        In this activity, the goal is to develop a machine learning model using the K-Means clustering algorithm to cluster job-related data based on certain features such as Job_Title, Company, Experience_Required, and Salary. The specific features that are used in clustering, in this case, are Experience_Required and Salary. <br><br>
+The dataset used for this activity is collected through web scraping from Indeed, which is a popular job search engine. The dataset includes features such as job title, company name, experience required, and salary. These features are then used to train the machine learning model, which clusters the data points based on their similarity in terms of experience required and salary. <br><br>
+The K-Means clustering algorithm is a popular unsupervised learning algorithm that partitions the data points into K clusters based on their similarity. The algorithm iteratively assigns each data point to the nearest cluster centroid and then recalculates the centroids of the clusters based on the updated cluster assignments. This process is repeated until the algorithm converges into a stable clustering solution. <br><br>
+In this activity, the K-Means algorithm is applied to cluster the job-related data based on their experience required and salary. The algorithm identifies the clusters of jobs that require similar experience and offer similar salaries. This can be useful for job seekers who are looking for jobs that match their level of experience and salary expectations.
+
+                    </p>
+                  </div>
+
+                  <div class="method-evaluation">
+                    <h5> Method / Evaluation  </h5>
+                    <p>
+                        The analysis we had during the process of conducting the activity is that we should have an understanding of the steps involved in building and evaluating the python program.
+<br><br>
+Initially, the group used the dataset scraped from Indeed. With 209 instances and features Job_Title, Company, Experience_Required, and Salary. The group then started by reading items in the dataset. The goal of the activity is to cluster data using the features Experience_Required, and Salary. <br><br>
+
+In model building, after reading the dataset, the program chose the columns Experience_Required, and Salary as features of the clustering. A code to determine the optimal number of clusters using the elbow method was also added. Moreover, the program proceeded to fit KMeans to the data using the optimal number of clusters. Plotted the clustered data points, and centroids of the clusters. Get the indices of the non-clustered data points and plot the unclustered data points. <br><br>
+
+For flask implementation, which is a popular Python web framework that allows developers to quickly build web applications. A python code was made to connect both the HTML file which is where the user interacts and the model for the display of the plotted cluster. The python code works by reading the dataset and loading the model. Generated the cluster plot and save it to a png file. Finally, that png file was displayed and showed to the HTML file.
+
+                        <br>
+                    </p>
+                 <p> If you want to view how we made the model, click the button below.
+                </p>  
+                    <a target="_blank" href="https://drive.google.com/file/d/1UGyS8PeCVK7Rdrt9nuJWRoQxijyig9RZ/view?usp=sharing">
+                        <button >View Model</button>
+                    </a>
+                  </div>
+
+                  <div class="results">
+                    <h5> Results and Discussions      </h5>
+                    <p>
+                        The K-Means model achieved a silhouette score of 77% in clustering the data based on the given features of the dataset. The cluster plot showed 3 clusters. The first cluster is set to the color red which depicts jobs that have 0-5 years of experience required and middle-level salary. The second cluster is set to the color blue which depicts most jobs under this cluster having 0-3 years experienced required and having high salaries. Lastly, the third cluster was set to the color green which depicts jobs that require 1-6 years of experience and have low salaries compared to others.
+<br><br>
+The Flask implementation is successful in connecting the HTML file and the model for the functionality of classification. The output is user-friendly, with the appropriate output sent back to the user as Junior, Senior, or Project Manager. The group's approach in model building is logical, starting with reading the dataset and dropping irrelevant columns to improve the classifier's performance. Overall, the project is a good start in building a job classification system using Python. There are still opportunities for improvement, but the group's approach is a solid foundation for future development.
+
+                    </p>
+              
+                    <a target="_blank" href="{{ url_for('k_means')}}">
+                        <button >View Output</button>
+                    </a>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+          <br>
+
+                    <!-- TEXT GENERATION-->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
+                &nbsp; Text Generation (LSTM, Bidirectional LSTM, GRU)
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+              <div class="accordion-body">
+                <div class="course-topic">
+                    <h5> Course Topic  </h5>
+                
+                    <p> The course topic is centered around the creation and application of Recurrent Neural Network (RNN) architectures for generating and predicting the next words of an input. RNNs are a type of neural network particularly effective for processing sequential data, making them well-suited for tasks such as language modeling, text generation, and machine translation.
+                  </p>
+                    </div>
+                  
+                  <div class="data">
+                    <h5> Data  </h5>
+                
+                    <p> The data used in this implementation is the data scraped from Yellow Pages. Initially, the data is in .csv format and was later converted into .json format to be used in this activity.
+                    </p>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1-k3VEhZTGwJu4Wgu6ydPs1E6te9weFWmEsIL0NYeWis/edit?usp=sharing">
+                        <button >View dataset</button>
+                    </a>
+                    <br> <br>
+                    <p>The dataset contains the following features: <br>
+
+                      Company (categorical, string)<br>
+                      Address (categorical, string)<br>
+                      Telephone (categorical, string)<br>
+                      Rating (categorical, string)<br>
+                      Review (categorical, string)<br>
+                      Is_Positive (categorical, int)<br>
+                      
+                    </p>
+
+                    
+                  </div>
+
+                  <div class="problem-statement">
+                    <h5> Problem Statement  </h5>
+                    <p>
+                      This implementation solely focuses on text generation. Based on the trained model, we will be able to output a prediction that predicts the next number of words. We utilized recurrent neural network (RNN) architectures for generating and predicting next words of an input. Specifically, the types of RNN architectures that were used in this implementation are: LSTM, Bidirectional LSTM, and GRU.
+                      <br><br>
+                      The implementation presented here is centered around text generation. Through the trained model, we can generate predictions for the subsequent number of words in a sequence. The approach relies on recurrent neural network (RNN) architectures to generate and forecast the next words based on the input. Specifically, the implementation utilizes LSTM, Bidirectional LSTM, and GRU RNN architectures for this purpose. By leveraging these techniques, we aim to enhance the generation and prediction of text, enabling applications such as language modeling, creative writing, automated content generation, and more. Our focus lies in exploring and refining the capabilities of these RNN architectures for text generation and advancing the field of natural language processing.
+                      
+                                            
+                    </p>
+                  </div>
+
+                  <div class="method-evaluation">
+                    <h5> Method / Evaluation  </h5>
+                    <p>
+                      MODEL CREATION <br> <br>
+
+                      Tokenization and Preprocessing: The code starts by loading the data from yellow_pages.json and preprocessing it. The reviews are normalized to lowercase and split into individual strings. The Tokenizer class from Keras is used to tokenize the corpus data and fit it on the reviews. <br><br>
+                      
+                      Model Training: Three different models (Bi-LSTM, LSTM, and GRU) are created and trained using the tokenized input sequences and labels. The models are compiled with an optimizer (Adam) and a loss function (categorical_crossentropy). The training is performed using the fit method, and the models are trained for a specified number of epochs. <br><br>
+                      
+                      Plotting Accuracy and Loss: The plot_accuracy_and_loss function is called to plot the accuracy and loss curves for each model during training. The plots are saved as PNG files. <br><br>
+                      Model Saving: After training, the Bi-LSTM model is saved to a file named "bi_lstm_model.h5" using the save_model method. <br><br>
+                      Tokenizer Saving: The tokenizer is saved as a JSON file named "tokenizer.json" using the to_json method. <br><br>
+                      Model Loading: The saved models (Bi-LSTM, LSTM, and GRU) are loaded from their respective files using the load_model method. <br><br>
+                      Tokenizer Loading: The tokenizer is loaded from the "tokenizer.json" file using the tokenizer_from_json method. <br><br>
+                      Text Generation: The generate_predictions function is defined to generate text predictions given a seed text, the number of words to predict, and the maximum length of the input sequence. It uses the loaded models and tokenizer to predict the next word based on the seed text. The function iteratively predicts the next word and appends it to the seed text until the desired number of words is generated. <br><br>
+                      User Input and Prediction: The user is prompted to enter a seed text and the number of words to predict. The generate_predictions function is called with the loaded models and tokenizer to generate text predictions for each model based on the user's input. The predictions are then printed to the console. <br><br>
+                      FLASK IMPLEMENTATION  <br> <br>
+                      Model Loading: The previously trained models (Bi-LSTM, LSTM, and GRU) are loaded from their respective files using the load_model function. The loaded models are assigned to the variables loaded_bi_lstm_model, loaded_lstm_model, and loaded_gru_model. <br><br>
+                      Tokenizer Loading: The tokenizer is loaded from the "tokenizer.json" file using the tokenizer_from_json function. The loaded tokenizer is assigned to the variable tokenizer. <br><br>
+                      Setting Maximum Sequence Length: The maximum sequence length (max_sequence_len) is set to a specific value based on the length of the input sequences used during training. You need to replace this value with the appropriate length based on your training data. <br><br>
+                      Updated generate_predictions Function: The generate_predictions function is updated to handle generating predictions within the Flask application. It takes the loaded model, tokenizer, seed text, the number of words to predict, and the maximum length of the input sequence as inputs. The function iteratively predicts the next word and appends it to the seed text until the desired number of words is generated. It also checks if the predicted word is not the <OOV> (Out of Vocabulary) token and only adds valid words to the generated text. <br><br>
+                      Flask Route and Prediction: The Flask route /predict is defined to handle both GET and POST requests. In the case of a POST request, the form data is retrieved, including the seed text and the number of words to predict. The generate_predictions function is called with the loaded models and tokenizer to generate text predictions for each model based on the user's input. The predictions are stored in a dictionary called response. Finally, the response dictionary is rendered on an HTML template named predict.html. <br><br>
+                      Handling GET Requests: In the case of a GET request, the predict.html template is rendered without any predictions. <br>
+                                            
+                      
+                        <br>
+                    </p>
+                 <p> If you want to view how we made the model, click the button below.
+                </p>  
+                    <a target="_blank" href="https://colab.research.google.com/drive/1n3AJVj39cygdehWrbpEq33RQxBV8KO82?usp=sharing">
+                        <button >View Model</button>
+                    </a>
+                  </div>
+
+                  <div class="results">
+                    <h5> Results and Discussions      </h5>
+                    <p>
+                      The trained models can generate predictions based on the input seed text and produce a sequence of words. The generated predictions can be insightful for various applications, such as text completion or generating new content. 
+                    </p>
+              
+                    <a target="_blank" href="{{ url_for('predict')}}">
+                        <button >View Output</button>
+                    </a>
+                    <br>                    <br>
+
+                    <p>Text generation models, such as the Bi-LSTM, LSTM, and GRU models trained in the provided code, have the ability to generate predictions based on a given seed text. This functionality opens up several possibilities for their application in various domains.
+                      <br><br>
+                      
+                      
+                      Text Completion: One practical use case is text completion, where the models can be used to suggest or complete sentences or phrases based on an incomplete input. By providing a partial sentence or phrase as the seed text, the models can generate the most likely next words, effectively completing the text in a coherent manner.<br><br>
+                      Content Generation: The generated predictions can be used to generate new content, such as articles, stories, or poetry. By starting with an initial sentence or idea, the models can generate a sequence of words that expand upon the given context, resulting in unique and creative content.<br><br>
+                      Assistance in Writing: Text generation models can assist writers in generating ideas or overcoming writer's block. By providing a prompt or a few initial words, writers can explore different possibilities and directions for their writing. The models can generate multiple predictions, offering writers a range of options to choose from or inspire further development.<br><br>
+                      Personalized Recommendations: Text generation can be utilized to provide personalized recommendations in various domains. For instance, in e-commerce, the models can generate personalized product recommendations based on a user's browsing history or preferences. In news or content platforms, they can suggest articles or content based on a user's interests or reading history.<br><br>
+                      Chatbots and Virtual Assistants: Text generation models can enhance the conversational abilities of chatbots and virtual assistants. By incorporating the models, these systems can generate human-like responses based on user queries or statements, creating a more interactive and engaging user experience.<br><br>
+                      However, it is crucial to carefully evaluate and validate the generated predictions. Text generation models are probabilistic in nature, and their predictions are based on statistical patterns learned from the training data. Therefore, the generated content may not always be perfect and might contain errors, grammatical inconsistencies, or lack context coherence. It is essential to consider the quality, relevance, and diversity of the generated predictions and apply post-processing techniques if necessary to refine the output.
+                      </p>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+<br>
+                <!-- TEXT CLASSIFICATION -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">
+                &nbsp; Text Classification (Negative/Positive Sentiment Prediction)
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
+              <div class="accordion-body">
+                <div class="course-topic">
+                    <h5> Course Topic  </h5>
+                
+                    <p> The implementation mentioned is designed specifically to classify text into two categories: positive sentiment or negative sentiment. This means that the main objective of the implementation is to determine the emotional tone or opinion expressed in a given text and label it accordingly.
+
+                    </p>
+                    </div>
+                  
+                  <div class="data">
+                    <h5> Data  </h5>
+                
+                    <p> The data used in this implementation is the data scraped from Yellow Pages. Initially, the data is in .csv format and was later converted into .json format to be used in this activity.
+
+                    </p>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1-k3VEhZTGwJu4Wgu6ydPs1E6te9weFWmEsIL0NYeWis/edit?usp=sharing">
+                        <button >View dataset</button>
+                    </a>
+                    <br> <br>
+                    <p>The dataset contains the following features: <br>
+
+                      Company (categorical, string)<br>
+                      Address (categorical, string)<br>
+                      Telephone (categorical, string)<br>
+                      Rating (categorical, string)<br>
+                      Review (categorical, string)<br>
+                      Is_Positive (categorical, int)<br>
+                      
+                    </p>
+
+                    
+                  </div>
+
+                  <div class="problem-statement">
+                    <h5> Problem Statement  </h5>
+                    <p>
+                      The objective of this project is to develop an effective and accurate system for classifying text into positive or negative sentiment. The implementation should focus exclusively on sentiment analysis and aim to accurately identify the emotional tone expressed in textual data.  <br><br>
+
+                      The implementation focusing on text sentiment classification, specifically distinguishing between positive and negative sentiment, has diverse applications across industries. By developing and utilizing this implementation, we aim to contribute to the advancement and refinement of sentiment analysis techniques. Its potential uses include social media analysis, customer feedback analysis, brand monitoring and reputation management, market research, voice of the customer analysis, news analysis, and online reputation management. By implementing and exploring the capabilities of this system, we strive to enhance sentiment analysis methodologies and contribute to their development and practical utilization.
+                                            
+                                            
+                    </p>
+                  </div>
+
+                  <div class="method-evaluation">
+                    <h5> Method / Evaluation  </h5>
+                    <p>
+                      MODEL CREATION AND TESTING<br><br>
+
+                      Data Loading: The code begins by loading the data from a JSON file named "yellow_pages.json". The text reviews are stored in the 'sentences' list, and the corresponding sentiment labels are stored in the 'labels' list.<br><br>
+                      Preprocessing Parameters: Several parameters are defined for preprocessing the data. These include the vocabulary size (vocab_size), embedding dimension (embedding_dim), maximum sequence length (max_length), truncation type (trunc_type), padding type (padding_type), out-of-vocabulary token (oov_tok), and training size (training_size).<br><br>
+                      Data Split: The data is split into training and testing sets. The first 'training_size' sentences and labels are used for training, while the remaining sentences and labels are used for testing.<br><br>
+                      Tokenization: The 'Tokenizer' class from Keras is used to tokenize the training sentences. The tokenizer is fitted on the training sentences, and a word index is created based on the unique words in the training data.<br><br>
+                      Sequences Padding: The training and testing sequences are padded or truncated to a fixed length of 'max_length'. This ensures that all sequences have the same length for input to the RNN model.<br><br>
+                      Labels Conversion: The training and testing labels are converted to numpy arrays and stored as 'training_labels' and 'testing_labels', respectively.<br><br>
+                      Model Architecture: The RNN model architecture is defined using the Sequential API from TensorFlow. The model consists of an embedding layer, a flatten layer, a dense layer with 24 units and ReLU activation, and a final dense layer with 1 unit and sigmoid activation for binary classification.<br><br>
+                      Model Compilation: The model is compiled with binary cross-entropy loss as the loss function, the Adam optimizer, and accuracy as the evaluation metric.<br><br>
+                      Model Training: The model is trained using the training data (padded sequences and labels) for a specified number of epochs. The validation split of 0.2 indicates that 20% of the training data will be used for validation during training.<br><br>
+                      Evaluation and Plotting: The training history is stored in the 'history' variable. The 'plot_graphs' function is defined to visualize the accuracy and loss of the model over epochs using matplotlib. The training and validation accuracy and loss are plotted separately.<br><br>
+                      Model Saving: The trained model is saved to a file named "text_classification.h5" using the 'save' method.<br><br>
+                      Tokenizer Saving: The tokenizer object is saved as a pickle file named "tokenizer.pkl" using the 'pickle.dump' method.<br><br>
+                      Loading and Compilation: The saved model is loaded from the file "text_classification.h5" using the 'load_model' function. The loaded model is then compiled with the same settings as before.<br><br>
+                      Prediction: A list of example sentences is defined. These sentences are tokenized and padded using the tokenizer and padding parameters. The 'predict' method is called on the loaded model to obtain the predicted probabilities of each sentence belonging to a positive class.<br><br>
+                      Thresholding and Labeling: A threshold of 0.5 is used to classify the predicted probabilities as positive or negative sentiment. The predictions above the threshold are labeled as 'positive', while those below are labeled as 'negative'. The labels are stored in the 'labels' list.<br><br>
+                      Printing Labels: Finally, the predicted labels for the example sentences are printed to the console.<br><br>
+                      FLASK IMPLEMENTATION<br><br>
+                      Model and Tokenizer Loading: The code loads the pre-trained model and tokenizer from the saved files. The load_model function is used to load the model from the 'text_classification.h5' file. The tokenizer is loaded by reading the 'tokenizer.json' file using the open function and then using the tokenizer_from_json method from tf.keras.preprocessing.text.<br><br>
+                      Model Compilation: The loaded model is compiled using the compile method. The loss function is set to 'binary_crossentropy', the optimizer is set to 'adam', and the metrics are set to 'accuracy'.<br><br>
+                      Request Handling: The code defines an endpoint '/text_classify' that handles both GET and POST requests. If a POST request is received, the input text is extracted from the request.<br><br>
+                      Text Preprocessing: The input text is tokenized and padded using the loaded tokenizer. The texts_to_sequences method converts the input text into a sequence of integers based on the tokenizer's word index. The pad_sequences function pads the sequence to a maximum length of 100, using the 'post' padding type and 'post' truncation type.<br><br>
+                      Prediction: The padded sequence is used to make predictions using the loaded model's predict method. The predicted probabilities are obtained.<br><br>
+                      Label Generation: A threshold of 0.5 is used to determine the class labels. If the predicted probability is greater than the threshold, the label is set to 'positive'; otherwise, it is set to 'negative'.<br><br>
+                      Rendering the Result: The prediction result, including the input text and the predicted label, is rendered using the 'text_classify.html' template. The input text is displayed as 'sentence', and the predicted label is displayed as 'label'. If a GET request is received, the 'text_classify.html' template is rendered without any prediction result.
+                                          </p>
+                 <p> If you want to view how we made the model, click the button below.
+                </p>  
+                    <a target="_blank" href="https://colab.research.google.com/drive/1OxoMLS0gElEnOymS8JidfsAA5kAQ86rr?usp=sharing">
+                        <button >View Model</button>
+                    </a>
+                  </div>
+
+                  <div class="results">
+                    <h5> Results and Discussions      </h5>
+                    <p>
+                      When implementing a text classification model to predict sentiment, the objective is to develop a system capable of automatically analyzing and determining whether a given text expresses a positive or negative sentiment. In this particular implementation, the text classification model successfully achieved results in predicting the sentiment (positive or negative) of input text. <br><br>
+                      However, it is worth noting that the model consistently predicts positive sentiment, which may raise questions about its reliability. The model's prediction tendencies can be attributed to the training data it was provided. In this case, the training data exhibits an imbalance, with a majority of instances representing positive sentiments (1) and a smaller proportion representing negative sentiments (0). Consequently, the model has primarily learned from the positive sentiment instances in the dataset.<br><br>
+                      To address this limitation and enhance the model's performance, it is recommended to train it using a more diverse and balanced dataset. By incorporating a wider range of sentiments and ensuring a proportional representation of positive and negative instances, the model would have a better foundation for accurate predictions. It is crucial to recognize that both the model architecture and the quality of the dataset significantly influence the predictive capabilities of the model.
+                      
+                      
+                      
+                                          </p>
+              
+                    <a target="_blank" href="{{ url_for('text_classify')}}">
+                        <button >View Output</button>
+                    </a>
+                    <br>                    <br>
+
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+         
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+
+  {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,361 @@
+{% extends 'base.html' %}
+{% block title %} Text Classification {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto"><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto"><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto active"><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p> Text Classification Model </p>
+        <div class="desc-container">
+        <p class="desc">The NLP text generation model employs a sentiment tokenizer to determine whether the input expresses positive or negative sentiments. It examines sequential patterns within the text and generates output that is coherent and contextually relevant to the sentiment conveyed.
+
+        </p>
+        
+      </div>
+      <a href="#knn-section"> <button class="campaign-button"> CLASSIFY </button></a>
+
+     
+        
+
+
+    </div>
+  </section><!-- End Hero -->
+
+<section id="knn-section" class="knn-section">
+<div id="knn-container" class="container knn-container col-lg-7 col-md-7 col-sm-10 col-11 p-5 pb-0">
+
+<img src="/static/img/logo.png" height="100px" alt="" style=" display: block; margin-left: auto; margin-right: auto;">
+  
+    <div class="section-title ">
+      <h2 class="prediction-output">Text Classification</h2>
+      <p style="color: #c9c9c9"> Enter initial text and the model will predict whether it is a positive or a negative sentiment. </p>
+      </p>
+
+    </div>
+
+    <div class="row">
+    
+      <div class="col-lg-12 col-md-12 col-sm-12 p-0  content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div id="form-input-container">
+          <form class="text-classify" id="text-classify-form">
+            <label for="text">Enter Text:</label><br>
+            <textarea id="text-input" name="text" rows="1" class="col-lg-6 col-md-8 col-11"></textarea><br>
+            
+            <input type="button" value="Predict" onclick="classifyText()">
+            
+            {% if sentence and label %}
+            <div class="prediction-container">
+              <div class="prediction-heading-and-text">
+                <h2 class="prediction-heading" style="display: inline;">INPUT TEXT</h2>
+                <h2 class="prediction-text" style="color: white; font-size: 16px; font-weight: 200; display: inline;">{{ sentence }}</h2>
+              </div>
+            </div>
+            
+            <div class="prediction-container">
+              <div class="prediction-heading-and-text">
+                <h2 class="prediction-heading">PREDICTION</h2>
+                <h2 class="prediction-text" style="color: white; font-size: 16px; font-weight: 200;">{{ label }}</h2>
+              </div>
+            </div>
+            {% endif %}
+          </form>
+            </div>
+
+            <div class="section-title ">
+              <h2 class="prediction-output">DOCUMENTATION </h2>
+              <p style="color: #c9c9c9"> Discover our Model Creation Journey. </p>
+              </p>
+            </div>
+
+            <div class="course-topic">
+              <h5> COURSE TOPIC  </h5>
+          
+              <p> 
+                The underlying implementation is specifically tailored to perform text classification, where its primary objective is to discern the emotional sentiment or opinion conveyed within a given text and subsequently assign it to one of two categories: positive sentiment or negative sentiment. This classification task aims to identify and categorize the expressed emotional tone in an accurate and reliable manner.
+            
+              </p>
+            </div>
+
+            <div class="data">
+              <h5> DATA  </h5>
+          
+              <p> 
+The data used in this implementation is the data scraped from Yellow Pages with merged data from Kaggle. Initially, the data is in .csv format and was later converted into .json format to be used in this activity.
+              </p>
+              <a target="_blank" href="https://docs.google.com/spreadsheets/d/1YVPp7McyTAVTXZBeJM8FTFaTWidZofDI8yXJjxsAe9s/edit?usp=sharing">
+                  <button >View Dataset</button>
+              </a>
+              <br> 
+              <p>
+                The dataset used in this study consists of 22340 instances. Each instance represents a sample and contains a "Review" column and an "Is_Positive" column. The "Review" column contains one or more reviews, while the "Is_Positive" column contains one or more binary values indicating the sentiment of the corresponding reviews. In this activity, we will focus on both columns to train our model.
+    
+              </p>
+               <p>Dataset Overview:</p>
+               <p>  > Company (categorical, string)
+               <br>  > Address (categorical, string)
+               <br>  > Telephone (categorical, string)
+               <br>  > Rating (categorical, string)
+               <br>  > Review (categorical, string)
+               <br>  > Is_Positive (categorical, list)
+              </p>
+            </div>
+
+            <div class="problem-statement">
+              <h5> PROBLEM STATEMENT  </h5>
+              <p>
+                The primary objective of this project is to develop a robust and accurate system that specializes in classifying text based on sentiment, specifically discerning between positive and negative emotions. The implementation is dedicated to the task of sentiment analysis and aims to effectively identify and categorize the emotional tone expressed in textual data. <br><br>
+
+                This endeavor holds significant potential for various industries, offering applications such as social media analysis, customer feedback evaluation, brand monitoring and reputation management, market research, voice of the customer analysis, news analysis, and online reputation management. By diligently implementing and exploring the capabilities of this system, our aim is to advance sentiment analysis methodologies and contribute to their practical implementation and ongoing development.
+                                                   
+              </p>
+            </div>
+            <div class="method-evaluation">
+              <h5> METH0D & EVALUATION  </h5>
+              <p>
+               <b>PREPROCESSING CLASSIFICATION MODEL
+              </b>  <br><br>
+              1. Reviews are stored within a list, so each review was separated / extracted and the Company, Address, Telephone were copied onto a new row. <br><br>
+
+              2. The reviews were subject to a sentiment analysis using nltk vader sentiment analyzer library determined whether if they are positive , "1" will be the result and "0" otherwise.<br><br>
+              
+              
+              4. Data Augmentation was implemented to create more instances of negative reviews by using 'shuffle sentence' and 'replace synonyms'.<br><br>
+              
+              
+              3. It resulted in 841 instances of the csv file, still it was not enough to accurately classify a random review whether they are positive or negative. Two review datasets of hotels and restaurants were obtained from Kaggle and were used to further enhance the model.<br><br>
+              
+              
+              4. The two datasets underwent preprocessing and sentiment analysis. Then they were merged into the main dataframe, keeping the latter's file headers.<br><br>
+              
+              
+              5. Then the merged csv file was converted into a .json file for the model to read. with and encoding utf-8 and the column names were renamed to the prescribed format.<br><br>
+                             </p>
+             
+              <p>
+                <b>MODEL</b> <br><br>
+                As a team of researchers, we started by loading the dataset containing reviews and their associated sentiment labels from a JSON file. We stored the reviews in the sentences list and the corresponding labels in the labels list.<br><br>
+                To preprocess the data, we defined several parameters such as the vocabulary size, embedding dimension, maximum sequence length, and padding/truncation types. We split the data into training and testing sets using the train_test_split function from scikit-learn, ensuring a specified ratio and stratifying the labels to maintain class balance.<br><br>
+                Next, we tokenized the sentences using the Tokenizer class from TensorFlow, which assigns unique tokens to words in the vocabulary. We applied the tokenizer on the training sentences and obtained the word index. We also converted the sentences into sequences of integers using the tokenizer's texts_to_sequences method for both the training and testing data.<br><br>
+                To handle sequences of varying lengths, we padded and truncated the sequences using the pad_sequences function. This ensured that all sequences had the same length. We converted the labels to numpy arrays and prepared them for training by converting them to float32 data type.<br><br>
+                For model architecture, we designed a sequential model using the Keras API from TensorFlow. The model consisted of an embedding layer, a flatten layer, and several dense layers with ReLU activation functions. The final dense layer used a sigmoid activation function to predict the sentiment label. We compiled the model with the binary cross-entropy loss function, the Adam optimizer, and the accuracy metric.<br><br>
+                To prevent overfitting, we incorporated early stopping as a callback during model training. We trained the model on the padded training sequences and labels, specifying the number of epochs and the validation split for monitoring performance.<br><br>
+                During training, we monitored the model's accuracy and loss on both the training and validation data. To visualize the training progress, we created a function called plot_graphs that plotted these metrics using matplotlib.<br><br>
+                After training, we extracted the weights of the embedding layer and printed their shape to examine the learned representations of the words.<br><br>
+                We saved the trained model and the tokenizer to files for future use. Later, we loaded the saved model and tokenizer to make predictions on new reviews. We used the loaded model to predict the sentiment probabilities of the new padded sequences and converted them into class labels using a threshold. Finally, we printed the predicted labels for the new reviews.<br><br>
+                <a target="_blank" href="https://drive.google.com/file/d/1hgWQY6CG2D4Qtf2TfvDymXP9SCIpzOVM/view?usp=sharing">
+                  <button >View Model</button>
+              </a>
+              </p>
+              <p>
+                <b>FLOWCHART</b> <br><br>
+                <img src="/static/img/flowchart-text classification.png" height="600px" alt="">
+                </p>
+                              <p>
+                                
+                <b>FLASK</b> <br><br>
+                In our text classification project, we have developed a Flask web application to classify user-provided text. The code starts by loading the trained text classification model, which we have saved in a file called text_classification_model.h5. This file should be present in the same directory as our Flask application. The load_model function is used to load the model, making it ready for predictions.<br><br>
+                We have also trained a tokenizer to preprocess the input text and convert it into sequences of tokens. To utilize this tokenizer, we load its configuration from a JSON file called tokenizer-classify.json. The tokenizer is essential for tokenizing and padding the user-provided text, ensuring that it matches the format used during training.<br><br>
+                After loading the model and tokenizer, we compile the loaded model using the appropriate loss function, optimizer, and metrics. This step is crucial before we can make predictions with the model.<br><br>
+                Moving on to the Flask application itself, we define a route called /text_classify that accepts both GET and POST requests. When a POST request is received, we retrieve the input text from the request's form data. This text will be classified by our model. We then tokenize and pad the input text using the loaded tokenizer, ensuring it matches the required format.<br><br>
+                With the preprocessed text, we pass it through our loaded model to obtain predictions. The model predicts the probability of the input text belonging to the positive class. We set a threshold of 0.5 to convert these probabilities into class labels, labeling text as "positive" if the probability is greater than the threshold, and "negative" otherwise.<br><br>
+                Finally, we render a template called text_classify.html, passing the original input text and the predicted label to be displayed on the webpage. If a GET request is received, we simply render the template without any data, allowing users to input text for classification.
+                                              </p>
+                         
+            </div>
+            <div class="results">
+              <h5> RESULTS & DISCUSSIONS      </h5>
+              <p>
+                We conducted a text classification experiment using a trained model and the provided sample reviews. The reviews covered various aspects of experiences with hotels and accommodations. The goal was to classify each review as either positive or negative based on the sentiment expressed.<br><br>
+                The sample reviews were as follows:<br><br>
+               1. "The hotel staff was friendly and helpful, and the room was very clean."<br><br>
+                2. "The rooms were terrible. The bathroom was dirty and smelled bad, and the furniture was damaged."<br><br>
+                3. "The place has the best restaurant with the best-tasting pizza and lechon."<br><br>
+                4. "Horrible service! They failed to assist and handle clients. I will not contact them ever again."<br><br>
+                5. "Comfy beds and cheap and affordable rooms! I will most likely book another night at this hotel."<br><br>
+                6. "Rundown property, overbooked, unprofessional staff, and terrible service. Worse hotel in all existence."<br><br>
+                Based on our text classification model, the predicted sentiment labels for these reviews are as follows:<br><br>
+              1.  Positive<br><br>
+                2. Negative<br><br>
+               3. Positive<br><br>
+               4.  Negative<br><br>
+               5.  Positive<br><br>
+               6.  Positive<br><br>
+                The results of our text classification experiment indicate that our model was able to accurately classify the sentiment expressed in the provided reviews. The model successfully differentiated between positive and negative sentiments, showcasing its effectiveness in understanding and classifying textual sentiment.<br><br>
+                Review 1 expresses a positive sentiment, highlighting the friendly and helpful hotel staff and the cleanliness of the room. Our model correctly identified this sentiment as positive.<br><br>
+                In contrast, Review 2 conveys a negative sentiment, with complaints about the terrible condition of the rooms, including a dirty bathroom and damaged furniture. Our model accurately classified this review as negative.<br><br>
+                Review 3 demonstrates a positive sentiment, focusing on the excellent quality of the restaurant's pizza and lechon. Our model correctly identified this review as positive.<br><br>
+                Review 4 expresses a negative sentiment, with strong criticism of the service quality and a decision not to contact the establishment again. Our model successfully classified this review as negative.<br><br>
+                Review 5 reflects a positive sentiment, mentioning the comfortable beds and affordable rooms, indicating a positive experience. Our model correctly identified this sentiment as positive.<br><br>
+                Lastly, Review 6 expresses a negative sentiment, with multiple complaints about a rundown property, overbooking, unprofessional staff, and terrible service. Our model accurately classified this review as negative.<br><br>
+                Overall, our text classification model demonstrated its ability to accurately classify sentiment in the provided sample reviews. It successfully distinguished between positive and negative sentiments, showcasing its potential for automating sentiment analysis tasks in the hotel and accommodation industry.<br><br>
+                                  
+                </p>
+  
+                <p>
+                <b>ANALYZATION OF EACH MODELS' CONTEXT ACCURACY
+                </b> <br><br>
+                The analysis of the model's "context" accuracy reveals that the predictions for the sentiment classification of hotel reviews demonstrate a reasonably accurate understanding of the context within which they are trained. The model successfully classified 5 out of 6 test sentences correctly.<br><br>
+                The predictions aligned well with the sentiments expressed in the test sentences, accurately capturing positive or negative opinions about various aspects of the hotel experience. For instance, the model correctly identified positive sentiments when the sentences expressed satisfaction with friendly staff, cleanliness, excellent restaurant, and comfortable beds. Similarly, the model accurately recognized negative sentiments when the sentences indicated dissatisfaction with terrible rooms, dirty bathroom, damaged furniture, and horrible service.<br><br>
+                However, it's important to acknowledge that the model misclassified one sentence, which expressed a negative sentiment towards a rundown property, overbooking, unprofessional staff, and terrible service. In this case, the model failed to capture the negative sentiment accurately, categorizing it as positive instead.<br><br>
+                The overall performance indicates that the model has learned to associate certain textual patterns and keywords with positive or negative sentiments within the context of hotel reviews. It demonstrates a reasonable understanding of the sentiment nuances expressed in the given dataset.<br><br>
+                It's crucial to note that the model's accuracy is limited to the specific training data it was exposed to. The model relies on the patterns and contexts present in that dataset to make predictions. Consequently, when confronted with inputs or contexts significantly different from the training data, the model's accuracy may be compromised.<br><br>
+                To improve the model's "context" accuracy further, it would be beneficial to expand the training dataset to include a more diverse range of hotel reviews. Incorporating a broader range of sentiments, hotel types, and customer experiences could enhance the model's ability to generalize and capture a wider array of sentiments accurately. <br><br>
+                  
+              </p>
+              <p>
+                <b>OBSERVATIONS AND ASSUMPTIONS 
+                </b> <br><br>
+                <b>1. </b>
+                 Model Architecture Modifications: Trying different model architectures, such as recurrent neural networks (RNNs) or convolutional neural networks (CNNs), can be beneficial for capturing sequential dependencies or local patterns in the text data, respectively. These architectures might provide better representations of the data for sentiment classification.<br><br>
+                Recent research has focused on exploring different ways to enhance sentiment classification in NLP tasks. One approach that has gained attention is making changes to the model architecture itself. For example, researchers have been experimenting with recurrent neural networks (RNNs) and convolutional neural networks (CNNs) to improve the accuracy of sentiment classification models. RNNs are particularly effective at capturing the sequential nature of text data, allowing the model to understand the sentiment expressed throughout a sentence. This has been demonstrated in the study of Zhang et al. (2016). On the other hand, CNNs excel at capturing local patterns and features in text data, which can be valuable for sentiment analysis. The study of Chen (2015) has shown the success of CNNs in sentiment classification tasks. By incorporating these modifications into sentiment classification models, researchers aim to improve the models' ability to understand the complexities of textual data and enhance their overall performance. However, it's important to consider the specific characteristics of the dataset and the complexity of the sentiment analysis task when selecting the appropriate architecture.
+                                                              <br><br>
+                <b>2.</b>
+                Hyperparameter Tuning: Experimenting with different hyperparameter configurations, such as adjusting the embedding dimension, number of dense layers, and units within each layer, can help optimize the model's performance. Techniques like grid search or random search can be applied to explore various combinations effectively.<br><br>
+                In recent studies, researchers have emphasized the importance of hyperparameter tuning to enhance the performance of sentiment classification models. By experimenting with different hyperparameter configurations, such as adjusting the embedding dimension, number of dense layers, and units within each layer, researchers aim to find the optimal settings for their sentiment analysis task.<br><br>
+                The embedding dimension, which determines the size of word embeddings, has been a focus of investigation. Research studies, like Mikolov et al. (2013) and Pennington et al. (2014), have explored the impact of varying embedding dimensions on model performance. They discovered that selecting the right embedding dimension can improve the representation of word semantics and enhance sentiment classification accuracy.<br><br>
+                Another crucial aspect is the number of dense layers and the number of units within each layer. These hyperparameters influence the model's capacity to capture complex relationships and patterns. Studies conducted by Zhang et al. (2019) and Simard et al. (2003) examined different layer configurations and their effects on model performance. They found that adjusting the number of dense layers and units significantly impacts the model's ability to identify important features and improve sentiment classification accuracy.<br><br>
+                To effectively explore various hyperparameter combinations, researchers commonly employ techniques like grid search and random search. Grid search systematically evaluates hyperparameter values from a predefined search space, while random search randomly samples hyperparameters. Studies by Bergstra and Bengio (2012) and Bengio (2012) have shown the effectiveness of these search methods in finding optimal hyperparameter configurations for sentiment classification models.<br><br>
+                Hyperparameter tuning plays a crucial role in improving the performance of sentiment classification models. By adjusting hyperparameter configurations based on insights from relevant studies, researchers can fine-tune their models to better capture semantic relationships, learn complex patterns, and achieve higher accuracy in sentiment analysis tasks. Techniques like grid search and random search facilitate the exploration of hyperparameter combinations, helping researchers identify the best settings for their specific sentiment classification task.
+                         <br><br>                     
+                <b>3. </b>
+                Feature Engineering: Exploring additional features derived from the text data, such as sentiment scores, part-of-speech tags, or word embeddings, can provide supplementary information to the model, potentially enhancing its ability to capture sentiment more accurately.<br><br>
+
+                Feature engineering in sentiment analysis involves exploring additional features derived from the text data to improve the model's ability to capture sentiment accurately. Several studies have highlighted the effectiveness of incorporating supplementary information in sentiment analysis tasks. For example, "Sentiment Analysis: Capturing Favorability Using Natural Language Processing" by Nasukawa (2003) emphasizes the use of sentiment lexicons, which are curated dictionaries containing words and their associated sentiment scores. By incorporating sentiment lexicons as additional features, the model can leverage pre-defined sentiment information to enhance its understanding of sentiment in text. By incorporating these features, the model can gain deeper insights into the sentiment expressed in the text, leading to improved sentiment classification performance. These studies collectively support the idea that feature engineering, through the incorporation of sentiment lexicons, word embeddings, and topic modeling, can provide supplementary information to enhance the accuracy of sentiment analysis models.
+                                                
+              </p>
+              <p>
+                <b>References 
+                </b> <br><br>
+                Wang, X., Jiang, W., & Luo, Z. (2016, December). Combination of convolutional and recurrent neural network for sentiment analysis of short texts. In Proceedings of COLING 2016, the 26th international conference on computational linguistics: Technical papers (pp. 2428-2437). <br><br>
+                Chen, Y. (2015). Convolutional neural network for sentence classification (Master's thesis, University of Waterloo).<br><br>
+                
+                Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient estimation of word representations in vector space. arXiv preprint arXiv:1301.3781.<br><br>
+                Pennington, J., Socher, R., & Manning, C. D. (2014, October). Glove: Global vectors for word representation. In Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP) (pp. 1532-1543).<br><br>
+                Zhang, Y., & Wallace, B. (2015). A sensitivity analysis of (and practitioners' guide to) convolutional neural networks for sentence classification. arXiv preprint arXiv:1510.03820.<br><br>
+                Simard, P. Y., Steinkraus, D., & Platt, J. C. (2003, August). Best practices for convolutional neural networks applied to visual document analysis. In Icdar (Vol. 3, No. 2003).<br><br>
+                Bergstra, J., & Bengio, Y. (2012). Random search for hyper-parameter optimization. Journal of machine learning research, 13(2).<br><br>
+                Bengio, Y. (2012). Practical recommendations for gradient-based training of deep architectures. Neural Networks: Tricks of the Trade: Second Edition, 437-478.<br><br>
+                
+                Nasukawa, T., & Yi, J. (2003, October). Sentiment analysis: Capturing favorability using natural language processing. In Proceedings of the 2nd international conference on Knowledge capture (pp. 70-77).  
+              </p>
+              
+  
+    
+            </div>
+  
+
+  
+            </div>
+            </div>
+            </div>
+
+
+            </section>
+            
+            
+
+            <script>
+              function classifyText() {
+                var sentence = document.getElementById('text-input').value;
+                
+                var formData = new FormData();
+                formData.append('text', sentence);
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/text_classify', true);
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    displayPrediction(response.sentence, response.label);
+                  }
+                };
+                xhr.send(formData);
+              }
+              
+              function displayPrediction(sentence, label) {
+                var container = document.getElementsByClassName('text-classify')[0];
+                
+                // Remove existing prediction containers
+                var predictionContainers = document.getElementsByClassName('prediction-container');
+                while (predictionContainers.length > 0) {
+                  container.removeChild(predictionContainers[0]);
+                }
+                
+                if (sentence && label) {
+                  var inputTextContainer = document.createElement('div');
+                  inputTextContainer.className = 'prediction-container';
+                  container.appendChild(inputTextContainer);
+                  
+                  var inputTextElement = document.createElement('div');
+                  inputTextElement.className = 'prediction-heading-and-text';
+                  inputTextContainer.appendChild(inputTextElement);
+                  
+                  var inputTextHeading = document.createElement('h2');
+                  inputTextHeading.className = 'prediction-heading';
+                  inputTextHeading.style = 'display: inline;';
+                  inputTextHeading.innerHTML = 'INPUT TEXT';
+                  inputTextElement.appendChild(inputTextHeading);
+                  
+                  var inputText = document.createElement('h2');
+                  inputText.className = 'prediction-text';
+                  inputText.style = 'color: white; font-size: 16px; font-weight: 200; display: inline;';
+                  inputText.innerHTML = sentence;
+                  inputTextElement.appendChild(inputText);
+                  
+                  var predictionContainer = document.createElement('div');
+                  predictionContainer.className = 'prediction-container';
+                  container.appendChild(predictionContainer);
+                  
+                  var predictionHeading = document.createElement('h2');
+                  predictionHeading.className = 'prediction-heading';
+                  predictionHeading.innerHTML = 'PREDICTION';
+                  predictionContainer.appendChild(predictionHeading);
+                  
+                  var predictionText = document.createElement('h2');
+                  predictionText.className = 'prediction-text';
+                  predictionText.style = 'color: white; font-size: 16px; font-weight: 200;';
+                  predictionText.innerHTML = label;
+                  predictionContainer.appendChild(predictionText);
+                }
+              }
+            </script>
+                                    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+{% endblock %}
+
+</body>
+
+</html>

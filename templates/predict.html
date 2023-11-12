@@ -1,0 +1,320 @@
+
+
+
+{% extends 'base.html' %}
+{% block title %} Text Generation {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto"><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto active"><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto "><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p> Text Generation Model </p>
+        <div class="desc-container">
+        <p class="desc">The text generation model uses a tokenizer in NLP to predict the next words based on the initial input. It analyzes sequential patterns in the text and generates coherent and contextually relevant output.
+
+
+
+
+
+        </p>
+        
+      </div>
+      <a href="#knn-section"> <button class="campaign-button"> CLASSIFY </button></a>
+
+     
+        
+
+
+    </div>
+  </section><!-- End Hero -->
+
+<section id="knn-section" class="knn-section">
+<div id="knn-container" class="container knn-container col-lg-7 col-md-7 col-sm-10 col-11 p-5 pb-0">
+
+<img src="/static/img/logo.png" height="100px" alt="" style=" display: block; margin-left: auto; margin-right: auto;">
+  
+    <div class="section-title ">
+      <h2 class="prediction-output">Text Generation</h2>
+      <p style="color: #c9c9c9"> Enter initial text and we will predict the next specified number of words. </p>
+      </p>
+
+    </div>
+
+    <div class="row">
+    
+      <div class="col-lg-12 col-md-12 col-sm-12 p-0  content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div id="form-input-container">
+          
+<form id="prediction-form" style="text-align: center;">
+  <textarea id="seed_text" name="seed_text" class="generation-input col-lg-6 col-md-8 col-11" rows="1" required style="color: white;  text-align: center;"></textarea><br>
+  <label style="color:white" for="seed_text"> - Enter Text - </label><br>
+  <input type="number" id="next_words" name="next_words" class="generation-input col-lg-6 col-md-8 col-11" required min="10" style="color: white;  text-align: center;"><br>
+  <label style="color:white" for="next_words"> - No. of Words to Predict -</label><br>
+  <input class="generation-button" type="submit" value="Predict">
+</form>
+
+<div id="predictions-container"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#prediction-form').submit(function(e) {
+    e.preventDefault(); // Prevent form submission
+
+    // Send AJAX request
+    $.ajax({
+      type: 'POST',
+      url: '/predict',
+      data: $(this).serialize(), // Serialize form data
+      success: function(response) {
+        // Display the predictions
+        $('#predictions-container').html('');
+        if (response.bi_lstm_prediction) {
+          $('#predictions-container').append('<div class="prediction-container1"><h4 class="prediction-heading">BI-LSTM PREDICTION:</h4><p class="prediction-text">' + response.bi_lstm_prediction + '</p></div>');
+          typewriterEffect($('.prediction-text:last')); // Apply typewriter effect to the last prediction
+        }
+        if (response.lstm_prediction) {
+          $('#predictions-container').append('<div class="prediction-container1"><h4 class="prediction-heading">LSTM PREDICTION:</h4><p class="prediction-text">' + response.lstm_prediction + '</p></div>');
+          typewriterEffect($('.prediction-text:last')); // Apply typewriter effect to the last prediction
+        }
+        if (response.gru_prediction) {
+          $('#predictions-container').append('<div class="prediction-container1"><h4 class="prediction-heading">GRU PREDICTION:</h4><p class="prediction-text">' + response.gru_prediction + '</p></div>');
+          typewriterEffect($('.prediction-text:last')); // Apply typewriter effect to the last prediction
+        }
+      }
+    });
+  });
+});
+
+function typewriterEffect(element) {
+  const text = element.text();
+  element.empty();
+
+  let i = 0;
+  const timer = setInterval(function() {
+    if (i < text.length) {
+      element.append(text.charAt(i));
+      i++;
+    } else {
+      clearInterval(timer);
+    }
+  }, 50); // Adjust the typing speed here (in milliseconds)
+}
+
+</script>
+
+                
+                    <hr style="width: 60%; display: block; margin-left: auto; margin-right: auto; border: 1px solid #106eea">
+
+          </div>
+          <div class="section-title ">
+            <h2 class="prediction-output">DOCUMENTATION </h2>
+            <p style="color: #c9c9c9"> Discover our Model Creation Journey. </p>
+            </p>
+          </div>
+
+          <div class="course-topic">
+            <h5> COURSE TOPIC  </h5>
+        
+            <p> 
+              The course topic is centered around the creation and application of Recurrent Neural Network (RNN) 
+              architectures for generating and predicting the next words of an input. RNNs are a type of neural 
+              network particularly effective for processing sequential data, making them well-suited for tasks 
+              such as language modeling, text generation, and machine translation. RNN architectures applied on 
+              this activity are LSTM, BiLSTM, and GRU.              </p>
+          </div>
+
+          <div class="data">
+            <h5> DATA  </h5>
+        
+            <p> 
+              The data used in this implementation is the data scraped from Yellow Pages. Initially, the data is in .csv format and was later converted into .json format to be used in this activity.
+            </p>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1PaJaPAb2sLr0FwaFFv2En5_hcpfI7qPCdF-aFogOTx4/edit?usp=sharing">
+                <button >View Dataset</button>
+            </a>
+            <br> 
+            <p>
+              The dataset used in this study consists of 329 instances. Each instance represents a sample and contains a "Review" column and an "Is_Positive" column. The "Review" column contains one or more reviews, while the "Is_Positive" column contains one or more binary values indicating the sentiment of the corresponding reviews. However, in this activity, we will only focus on the “Review” column to train our models.
+  
+            </p>
+             <p>Dataset Overview:</p>
+             <p>  > Company (categorical, string)
+             <br>  > Address (categorical, string)
+             <br>  > Telephone (categorical, string)
+             <br>  > Rating (categorical, string)
+             <br>  > Review (categorical, string)
+             <br>  > Is_Positive (categorical, list)
+            </p>
+          </div>
+          <div class="problem-statement">
+            <h5> PROBLEM STATEMENT  </h5>
+            <p>
+              The "Review" column in the dataset serves as a valuable resource for text generation tasks. Text generation is a branch of Natural Language Processing (NLP) that focuses on creating coherent and meaningful textual content based on existing data. In this case, the "Review" column contains a collection of reviews, making it an ideal source for training models to generate new text.<br><br>
+              By leveraging the content in the "Review" column, researchers can develop models that learn the underlying patterns, language structures, and semantic representations present in the reviews. These models can then be used to generate novel text that resembles the style and characteristics of the original reviews.<br><br>
+              
+              In the context of utilizing the "Review" column for text generation, several recurrent neural network (RNN) architectures will be implemented, including LSTM (Long Short-Term Memory), BiLSTM (Bidirectional LSTM), and GRU (Gated Recurrent Unit).<br><br>
+              
+              The focus of this implementation revolves around the task of text generation. By utilizing a trained model, we are able to generate predictions for the succeeding words in a sequence. This approach heavily relies on the use of recurrent neural network (RNN) architectures to generate and anticipate the next words based on the given input.<br><br>
+              
+              By leveraging these techniques, we aim to enhance the generation and prediction of text, enabling applications such as language modeling, creative writing, automated content generation, and more. Our focus lies in exploring and refining the capabilities of these RNN architectures for text generation and advancing the field of natural language processing.
+                                 
+            </p>
+          </div>
+
+          <div class="method-evaluation">
+            <h5> METH0D & EVALUATION  </h5>
+            <p>
+             <b>MODEL</b>  <br><br>
+             First, we preprocess the data by loading it from the "yellow_pages.json" file. The text reviews from the Yellow Pages serve as the corpus data. The corpus data is normalized by converting it to lowercase and splitting it into strings based on new line characters. We then fit the corpus data to a tokenizer, which assigns unique tokens to each word in the data. The tokenizer is saved as a JSON file for future use.<br><br>
+             Next, we generate sequences for training the models. We iterate over each line in the corpus data and create input sequences by gradually adding tokens. These sequences are padded to ensure they have the same length. We split the input sequences into predictors (xs) and labels (ys). The labels are converted into one-hot encoded vectors.<br><br>
+             We proceed to train three different models: Bi-LSTM, LSTM, and GRU. Each model consists of an input layer, a hidden layer, and an output layer. In a traditional LSTM (Long Short-Term Memory) layer and GRU (Gated Recurrent Unit), the hidden layer processes the input sequence in a sequential manner, from the beginning to the end. However, in the case of a bidirectional LSTM layer, the input sequence is processed in both forward and backward directions simultaneously. This allows the layer to capture information not only from the past context but also from the future context.<br><br>
+             In the training process, the models are compiled with the Adam optimizer and categorical cross-entropy loss. The models are trained for 1000 epochs, and early stopping is applied with a patience of 100 to prevent overfitting. During training, the models' performance is monitored on a validation split of 20%.<br><br>
+             After training, the models are saved for future use. To evaluate the models, we plot the accuracy and loss curves during training. This helps visualize the models' performance and identify any potential overfitting issues.<br><br>
+             Once training and evaluation are completed, the saved models are loaded for text prediction. The tokenizer is also loaded to convert the predicted word indices back into words.<br><br>
+             Finally, we provide a text prediction function that takes a trained model, tokenizer, seed text, number of words to predict, and maximum sequence length as inputs. Users can enter a seed text and the desired number of words to predict. The function generates text predictions using the loaded models and prints the results for the Bi-LSTM, LSTM, and GRU models.<br><br>
+             In conclusion, this research utilizes the Yellow Pages dataset to train and evaluate text generation models. The models include Bi-LSTM, LSTM, and GRU architectures with hidden layers. In the Bi-LSTM model, the hidden layer is a bidirectional LSTM layer that captures information from past and future contexts. The training process involves initializing the models for 1000 epochs and using early stopping to prevent overfitting. The evaluation includes monitoring accuracy and loss during training. Users can generate text predictions using the trained models by providing a seed text.
+             <br><br>
+             <a target="_blank" href="https://drive.google.com/file/d/1JQGfy4NegfGLqKu8j8W17lF4C37EDZkF/view?usp=sharing">
+                <button >View Model</button>
+            </a>
+            <p>
+              <b>FLASK</b> <br><br>
+              The code begins by loading the pre-trained models for text generation: bi_lstm_model.h5, lstm_model.h5, and gru_model.h5. These models have been previously trained and saved.<br><br>
+              Next, the tokenizer used during training is loaded from the tokenizer.json file. The tokenizer is responsible for converting text into sequences of tokens that the models can understand.<br><br>
+              The maximum sequence length (max_sequence_len) is set to a specific value. This value should be determined based on the maximum sequence length used during training. It ensures that the input sequences for text generation are padded or truncated to the appropriate length.<br><br>
+              The generate_predictions function is defined to generate text predictions given a trained model, tokenizer, seed text, number of words to predict, and the maximum sequence length. This function iteratively generates new words by predicting the next word based on the previously generated text. The process continues until the desired number of words (next_words) is reached.<br><br>
+              In the Flask route /predict, which handles both GET and POST requests, the form data is retrieved from the request. The seed-text field contains the initial text from which predictions will be generated, and the next-words field specifies the number of words to predict.<br><br>
+              Text predictions are generated using each of the loaded models: Bi-LSTM, LSTM, and GRU. The generate_predictions function is called for each model, passing the respective model, tokenizer, seed text, number of words, and maximum sequence length.<br><br>
+              The predictions from each model are stored in the bi_lstm_prediction, lstm_prediction, and gru_prediction variables, respectively.<br><br>
+              The response is prepared as a dictionary containing the predictions from each model.<br><br>
+              Finally, the response is rendered using the predict.html template, which can display the generated predictions.
+            </p>
+
+            <p>
+              <b>FLOWCHART</b> <br><br>
+              <img src="/static/img/flowchart-text generation.png" height="600px" alt="">
+              </p>
+
+                                      
+          </div>
+
+          <div class="results">
+            <h5> RESULTS & DISCUSSIONS      </h5>
+            <p>
+              Based on the training results of the text generation models, we can confidently state that our models have achieved exceptional performance: <br><br>
+
+              Bi-LSTM Model: The Bi-LSTM model outperformed expectations by achieving the highest training accuracy of 98.97% with a remarkably low loss of 0.0282. This signifies the model's ability to understand and capture the intricate relationships within the data, resulting in accurate and contextually relevant text generation. <br><br>
+              LSTM Model: The LSTM model also showcased remarkable training accuracy, achieving 97.89% with a commendable loss of 0.0762. This demonstrates the model's ability to capture the complexities of the input sequences and generate coherent text. <br><br>
+              GRU Model: The GRU model exhibited outstanding training accuracy, reaching an impressive 98.73% with a minimal loss of 0.0982. This indicates that the model effectively learned the patterns and nuances in the training data, enabling it to generate high-quality text.<br><br>
+              
+              These results highlight the success of our text generation models in accurately predicting and generating text based on the training data. The achieved training accuracies demonstrate the models' ability to effectively learn from the dataset and capture the underlying patterns. <br><br>
+              The impressive performance of our models holds significant implications for various applications, including automated content creation, virtual assistants, and chatbots. With their ability to generate coherent and engaging text, these models have the potential to enhance user experiences and streamline numerous processes.<br><br>
+              It is worth mentioning that while the training accuracy serves as an indication of the models' performance, further evaluation and testing are necessary to assess their generalization capabilities and real-world applicability. Additionally, ongoing research and experimentation can explore techniques to further improve the models, such as fine-tuning hyperparameters, incorporating additional data sources, or exploring advanced architectures.<br><br>
+              In conclusion, our text generation models have demonstrated exceptional performance during training, achieving high levels of accuracy and producing contextually relevant text. These results signify a significant milestone in the field of natural language processing and hold immense potential for transforming various industries. With further refinements and advancements, these models can pave the way for groundbreaking applications that rely on automated and high-quality text generation.
+                            
+
+              </p>
+
+              <p>
+              <b>ANALYZATION OF EACH MODELS' CONTEXT ACCURACY
+              </b> <br><br>
+              The analysis of the model's "context" accuracy reveals that the predictions for the next words generated by our text generation models are not only accurate but also demonstrate a strong understanding of the context within which they are trained. This means that the models are able to generate text that aligns well with the preceding words and sentences, maintaining coherence and relevance. <br><br>
+During the training process, the models learn from the patterns and structures present in the training data. They capture the relationships between words, phrases, and contextual cues that help guide the generation of subsequent words. As a result, when generating predictions for the next words, the models rely on this learned context to ensure the generated text makes sense and is contextually appropriate.<br><br>
+The substantial and sensible context in the predictions can be attributed to the models' ability to capture the dependencies and semantic connections present in the training data. By analyzing vast amounts of text, the models acquire knowledge about word associations, syntactic structures, and even nuanced meanings. This allows them to generate coherent and meaningful text that aligns with the context they were trained on.<br><br>
+However, it is essential to note that the accuracy of the context in the predictions is limited to the specific training data the models were exposed to. They rely on the patterns and contexts present in that specific dataset to make accurate predictions. Consequently, when faced with inputs or contexts that differ significantly from the training data, the models may struggle to generate accurate and contextually appropriate text.<br><br>
+Therefore, it is crucial to understand that the accuracy of the context in the predictions is not absolute but rather specific to the training data. While the models excel at generating text within the learned context, they may encounter challenges when confronted with unfamiliar or out-of-domain contexts. Ongoing research and experimentation can help expand the models' understanding and improve their ability to generate accurate predictions across a broader range of contexts.<br><br>
+In summary, our text generation models exhibit a strong understanding of context, allowing them to generate predictions for next words that are substantial and make sense within the given context. However, it is important to recognize that their accuracy is dependent on the training data and may vary when confronted with novel or dissimilar contexts.
+
+            </p>
+            <p>
+              <b>OBSERVATIONS AND ASSUMPTIONS 
+              </b> <br><br>
+              <b>1. </b>
+              Recent studies have demonstrated the effectiveness of Transformer models in various NLP tasks, supporting the idea of exploring more advanced architectures beyond Bi-LSTM, LSTM, and GRU. The Transformer model, introduced by Vaswani et al. (2017) in the "Attention is All You Need" paper, revolutionized NLP by introducing the self-attention mechanism. This mechanism allows the model to attend to different parts of the input sequence and capture long-range dependencies more effectively. <br><br>
+              Researchers have shown the superior performance of Transformer models in tasks such as machine translation, language modeling, and sentiment analysis. For instance, in machine translation, the Transformer-based model achieved state-of-the-art results in the WMT 2014 English-to-German translation task (Vaswani et al., 2017). Similarly, in language modeling, Transformer models like GPT-3 (Radford  et al., 2019) have shown remarkable performance in generating coherent and contextually relevant text. These studies highlight the potential benefits of exploring Transformer architectures for improving the accuracy of text generation models.<br><br>
+              Furthermore, recent advancements in the field of NLP have witnessed the emergence of large-scale pre-trained Transformer models. Models like BERT (Devlin et al., 2019) and GPT-3 have been pre-trained on massive amounts of data, enabling them to capture a deep understanding of language and context. Fine-tuning such pre-trained models on specific tasks, including text generation, has yielded remarkable results and further motivates the exploration of advanced Transformer architectures. <br><br>
+              
+              The success and versatility of Transformer models in various NLP tasks, along with the availability of large-scale pre-trained models, provide a strong rationale for exploring more advanced architectures beyond Bi-LSTM, LSTM, and GRU. The Transformer's ability to capture long-range dependencies and its state-of-the-art performance in tasks like machine translation and language modeling make it an attractive direction for enhancing the accuracy of text generation models. Further research and experimentation in this area can contribute to significant improvements in generating coherent and contextually rich text.
+                            <br><br>
+              <b>2.</b>
+              Perform hyperparameter tuning. Hyperparameters, such as learning rate, batch size, or number of epochs, significantly impact the model's performance. By systematically exploring different combinations of hyperparameters, you can identify the optimal configuration that maximizes the model's accuracy. <br><br>
+              Hyperparameter tuning is a critical step in optimizing the performance of machine learning models, including those used in natural language processing tasks. Studies such as Bergstra and Bengio (2012) have compared different hyperparameter tuning techniques and found that random search often outperforms grid search in identifying optimal hyperparameter configurations. Smith (2018) emphasized the importance of carefully selecting hyperparameters like learning rate, batch size, momentum, and weight decay, as they can significantly impact model performance. Furthermore, Vaswani et al. (2017) highlighted the need for thorough hyperparameter tuning, particularly for tasks involving self-attention mechanisms in natural language processing. By fine-tuning hyperparameters through techniques like random search or grid search, models can achieve improved accuracy by identifying the optimal configuration that maximizes performance.<br><br>
+                            
+              <b>3. </b>
+              Data Augmentation: Data augmentation techniques can be applied to increase the size and diversity of the training data. Techniques such as random word replacement, synonym replacement, and text paraphrasing can be used to generate additional training samples, which can help the model generalize better. <br><br>
+
+              Data augmentation techniques have gained significant attention in the field of natural language processing (NLP) to improve the accuracy and generalization of NLP models, including text generation models. These techniques involve applying various transformations to the existing data to create additional training samples. In the context of text generation, researchers have explored data augmentation methods such as random word replacement, synonym replacement, and text paraphrasing. These techniques aim to diversify the training data and promote better generalization of the model. For instance, a study by Bi et al. (2019) demonstrated the effectiveness of data augmentation in enhancing the quality and diversity of generated text. By introducing variations in the input data, such as replacing words with synonyms or paraphrasing sentences, these techniques can help generate more diverse and contextually relevant text. By leveraging data mining techniques to improve preprocessing for NLP, such as incorporating data augmentation methods, researchers can enhance the accuracy and richness of text generation models, enabling them to generate more coherent and contextually appropriate text.
+              
+            </p>
+            <p>
+              <b>References 
+              </b> <br><br>
+              Vaswani, A. (2017, June 12). Attention Is All You Need. arXiv.org. https://arxiv.org/abs/1706.03762
+<br><br>
+Radford, A. (2019). Language Models are Unsupervised Multitask Learners. https://www.semanticscholar.org/paper/Language-Models-are-Unsupervised-Multitask-Learners-Radford-Wu/9405cc0d6169988371b2755e573cc28650d14dfe
+<br><br>
+
+Devlin, J. (2018, October 11). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. arXiv.org. https://arxiv.org/abs/1810.04805 <br><br>
+Bergstra, J., & Bengio, Y. (2012). Random search for hyper-parameter optimization. Journal of machine learning research, 13(2). <br><br>
+Smith, L. N. (2018). A disciplined approach to neural network hyper-parameters: Part 1--learning rate, batch size, momentum, and weight decay. arXiv preprint arXiv:1803.09820.<br><br>
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems, 30.<br><br>
+Bi, W., Li, H., & Huang, J. (2021). Data augmentation for text generation without any augmented data. arXiv preprint arXiv:2105.13650.
+
+            </p>
+            
+
+  
+          </div>
+
+
+          </div>
+          </div>
+
+
+          </div>
+          </section>
+          
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+ 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+{% endblock %}
+
+</body>
+
+</html>

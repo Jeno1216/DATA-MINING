@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% block title %} K-Means  {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto "><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto "><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto active"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto "><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto "><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p> K-Means </p>
+        <div class="desc-container">
+          <p class="desc" style="color: #c9c9c9"> K-means clustering is an unsupervised algorithm that groups similar data points together based on their features. It iteratively assigns data points to centroids and updates the centroids based on the mean values of the assigned points. 
+        </p>
+        
+      </div>
+      <a href="#knn-section"> <button class="campaign-button"> CLASSIFY </button></a>
+
+     
+        
+
+
+    </div>
+  </section><!-- End Hero -->
+
+  <section id="knn-section" class="knn-section">
+    <div id="knn-container" class="container knn-container col-lg-7 col-md-7 col-sm-10 col-11 p-5 pb-0">
+      <img src="/static/img/logo.png" height="100px" alt="" style="display: block; margin-left: auto; margin-right: auto;">
+      <div class="section-title-kmeans">
+        <h2 class="prediction-output">K-Means Job Cluster</h2>
+        <p style="color: #c9c9c9">Cluster job using our K-means model.<br>1 = Junior, 2 = Senior, 3 = Project Manager</p>
+        <br><br><br>
+        <!-- Result -->
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 p-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <div style="display: block; margin: 0 auto;" id="form-input-container">
+            <label for="filter_value" style="color: white;">Filter Value:</label>
+            <input style="border: 0; border-bottom: 1px solid #ababab; border-radius: 0; border-color: #106eea; background-color: transparent !important;color: white;" type="text" name="filter_value" id="filter_value">
+            <button class="filter-button" type="button" onclick="filterData()">Filter</button>
+          </div>
+        </div>
+      </div>
+      <p id="prediction-result" style="font-size: 24px; display: block; margin: 0 auto;"></p>
+      <br><br>
+      <img src="{{ plot_path }}" alt="K-means Clusters Plot" class="img-fluid" style="margin: 0 auto; margin-bottom: 30px; display: block;">
+      <img src="{{ plot_path1 }}" alt="K-means Clusters Plot" class="img-fluid" style="margin: 0 auto; margin-bottom: 30px; display: block;">
+
+<br><br>
+      <div class="section-title ">
+        <h2 class="prediction-output">DOCUMENTATION </h2>
+        <p style="color: #c9c9c9"> Discover our Model Creation Journey. </p>
+        </p>
+      </div>
+
+      
+      <div class="course-topic">
+        <h5> COURSE TOPIC  </h5>
+    
+        <p> 
+          This task involves implementing K-Means clustering to cluster the data obtained from scraping 
+          Indeed job listings. The goal is to organize the data into distinct groups based on similarity, 
+          allowing for better understanding and analysis of job characteristics.
+
+        </p>
+      </div>
+
+      <div class="data">
+        <h5> DATA  </h5>
+    
+        <p> The dataset used in this implementation is crucial for the K-Nearest Neighbor (KNN) algorithm. 
+          The dataset consists of job data that has been scraped from the Indeed website. The dataset serves 
+          as the foundation for training and evaluating the KNN model.     </p>
+        <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HcPykHEC8zY1RQ7lq8MylkApyo3fxp9aQYL133joZe8/edit?usp=sharing">
+            <button >View Dataset</button>
+        </a>
+        <br> 
+        <p>
+          <br>
+          The dataset used in this implementation comprises over 209 instances and includes four key features: 
+          Job_Title, Company, Experience_Required, and Salary. These features provide essential information 
+          about each job listing and serve as the basis for classifying jobs using the K-Nearest Neighbor 
+          (KNN) algorithm.
+
+        </p>
+         <p>Dataset Overview:</p>
+         <p>  > Job_Title (categorical, int)
+         <br>  > Company (categorical, string)
+         <br>  > Experience_Required (numerical, float)
+         <br>  > Salary (numerical, float)
+        </p>
+      </div>
+
+      <div class="problem-statement">
+        <h5> PROBLEM STATEMENT  </h5>
+        <p>
+          The objective of this activity is to develop a machine learning model utilizing the K-Means clustering algorithm to cluster job-related data based on specific features like Job_Title, Company, Experience_Required, and Salary. In this case, the clustering is performed on Experience_Required and Salary, and Job Title and Salary. <br><br>
+          The dataset utilized in this activity is acquired by web scraping from Indeed, a prominent job search engine. It encompasses various features such as job title, company name, required experience, and salary information. These features are employed to train the machine learning model, which then clusters the data points based on their similarity concerning a pair of features .<br><br>
+          K-Means clustering, an unsupervised learning algorithm, is chosen to partition the data points into K clusters based on their similarities. The algorithm proceeds iteratively by assigning each data point to the nearest cluster centroid and recalculating the centroids based on the updated cluster assignments. This process is repeated until a stable clustering solution is obtained.<br><br>
+          By applying the K-Means algorithm to the job-related data, clusters are identified based on similarities of paired features. This can be beneficial for job seekers in finding jobs that align with their desired experience and salary expectations.
+          
+                              
+        </p>
+      </div>
+      
+      <div class="method-evaluation">
+        <h5> METH0D & EVALUATION  </h5>
+        <p>
+         <b>MODEL</b>  <br><br>
+         During the analysis process of conducting the activity, it was identified that a comprehensive understanding of the steps involved in constructing and evaluating the Python program is crucial. <br><br>
+         Initially, the group utilized a dataset obtained through web scraping from Indeed, consisting of 209 instances and featuring attributes such as Job_Title, Company, Experience_Required, and Salary. The primary focus of the activity was to perform data clustering using the features of the dataset.<br><br>
+         In the process of building the model, the program began by reading the dataset and selecting the desired columns as the key features for clustering. Additionally, a code segment was implemented to determine the optimal number of clusters using the elbow method. Subsequently, the program proceeded to fit the KMeans algorithm to the data using the identified optimal number of clusters. The clustered data points and centroids were plotted to visualize the clustering results. Furthermore, the program identified the indices of the non-clustered data points and plotted them separately to provide insights into unclustered data patterns.
+ <br><br>
+         <a target="_blank" href="https://drive.google.com/file/d/1UGyS8PeCVK7Rdrt9nuJWRoQxijyig9RZ/view?usp=sharing">
+            <button >View Model</button>
+        </a>
+        <p>
+          <b>FLASK</b> <br><br>
+          In this code snippet, we begin by loading the data from a CSV file called 'filled_indeed.csv' using the pandas library. The dataset contains information related to job postings, including features such as Job_Title, Company, Experience_Required, and Salary. <br><br>
+          Next, we extract the necessary columns for clustering. We create two separate arrays, namely X, and Y, to store the combinations of features we want to cluster. For example, X contains the combination of Experience_Required and Salary, and Y contains Job_Title and Salary.<br><br>
+          We then load a pre-trained KMeans model using the pickle library. This model was previously trained to cluster similar data points based on their features. We open the 'kmeans_model.pickle' file and load the model into the 'loaded_model' variable.<br><br>
+          Using the loaded model, we make predictions on the data arrays X, and Y. The 'predict' method assigns each data point to its corresponding cluster based on the model's learned clustering patterns. The resulting cluster assignments are stored in the variables y_kmeans_loaded_X, and y_kmeans_loaded_Y.<br><br>
+          We proceed to generate cluster plots for each combination of features. We use the matplotlib library to create scatter plots for each cluster, where the data points are color-coded based on their assigned clusters. The cluster centroids are represented by black crosses.<br><br>
+          After plotting each cluster, we save the plots as image files using the 'savefig' function from matplotlib. The generated images are saved with file names  'cluster_plot.png', and 'cluster_plot1.png', in the 'static' directory.<br><br>
+          In addition to clustering based on features, we also provide functionality for filtering the dataset based on a specific job title. The '/k_means' route handles both the clustering and filtering operations. If a POST request is received, we extract the filter value from the form data and call the 'filter_dataset' function. This function reads the CSV file, filters the data based on the specified job title, and returns the filtered data as a dictionary. We then return the filtered data as a JSON response.<br><br>
+          For the GET request, we render the 'k_means.html' template, passing the paths to the generated cluster plots as variables. This allows the plots to be displayed on the webpage when it is rendered.<br><br>
+          Overall, this code segment demonstrates the process of clustering job-related data based on different combinations of features using the KMeans algorithm. It provides visual representations of the clustered data and allows users to filter the dataset based on specific job titles.
+          
+          
+          
+                              </p>
+      </div>
+
+    </div>
+
+  
+  </section>
+  
+  <script>
+    function filterData() {
+      var filterValue = document.getElementById('filter_value').value;
+  
+      // Send the AJAX request
+      $.ajax({
+        url: '/k_means',
+        type: 'POST',
+        data: { 'filter_value': filterValue },
+        dataType: 'json',
+        success: function(response) {
+          if (response.error) {
+            // Display the error message
+            $('#prediction-result').text('Error: ' + response.error);
+          } else if (response.data && response.data.length > 0) {
+            // Display the filtered data
+            var html = '<table>';
+            html += '<thead><tr>';
+            Object.keys(response.data[0]).forEach(function(column) {
+              html += '<th>' + column + '</th>';
+            });
+            html += '</tr></thead><tbody>';
+            response.data.forEach(function(row) {
+              html += '<tr>';
+              Object.values(row).forEach(function(value) {
+                html += '<td>' + value + '</td>';
+              });
+              html += '</tr>';
+            });
+            html += '</tbody></table>';
+            $('#prediction-result').html(html);
+          } else {
+            // No data available
+            $('#prediction-result').text('No filtered data available.');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+              });
+            }
+          </script>
+
+          
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+
+</html>

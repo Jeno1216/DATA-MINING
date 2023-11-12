@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% block title %} Bernoulli NB Prediction {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto "><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto active"><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto "><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto "><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p> Bernoulli Naives Bayes </p>
+        <div class="desc-container">
+          <p class="desc" style="color: #c9c9c9"> Bernoulli Naive Bayes is another classification algorithm suitable for discrete feature data.It calculates the probability of a data point belonging to a class by assuming that the features are independent and follow a Bernoulli distribution. This algorithm is commonly used in text classification tasks where the presence or absence of certain words is considered as features.
+
+
+
+
+
+        </p>
+        
+      </div>
+      <a href="#knn-section"> <button class="campaign-button"> CLASSIFY </button></a>
+
+     
+        
+
+
+    </div>
+  </section><!-- End Hero -->
+
+<section id="knn-section" class="knn-section">
+<div id="knn-container" class="container knn-container col-lg-7 col-md-7 col-sm-10 col-11 p-5 pb-0">
+
+<img src="/static/img/logo.png" height="100px" alt="" style=" display: block; margin-left: auto; margin-right: auto;">
+  
+    <div class="section-title ">
+      <h2 class="prediction-output">Bernoulli Naives Bayes Job Classifier</h2>
+      <p style="color: #c9c9c9"> Predict your job using our Bernoulli Naives Bayes model. </p>
+      </p>
+      <br><br><br>
+
+      <p id="prediction-result" style="font-size: 24px;"></p><!-- REsult -->
+
+
+    </div>
+
+    <div class="row">
+    
+      <div class="col-lg-12 col-md-12 col-sm-12 p-0  content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div id="form-input-container">
+
+          <form action="/bernoulliNB" method="POST" class="form flex-column ">
+                  
+            <div class="mb-3 col-12 col-lg-6 col-md-10" style="display: block; margin: 0 auto; text-align: center;">
+                <input style="text-align: center;" type="text" name="feature1" class="form-control text-light" id="feature1" required>
+                <label for="feature1" class="form-label">Year/s of Experience</label>
+
+              </div>
+
+              <div class="mb-3 col-12 col-lg-6 col-md-10" style="display: block; margin: 0 auto; text-align: center;">
+                <input style="text-align: center;"  type="text" name="feature2" class="form-control text-light" id="feature2" required>
+
+                <label for="feature2" class="form-label">Salary</label>
+              </div>
+ 
+            <input class="submit" type="submit" value="PREDICT">
+
+
+          </form>  
+          <hr style="width: 60%; display: block; margin-left: auto; margin-right: auto; border: 1px solid #106eea">
+      
+        </div>
+
+        <div class="section-title ">
+          <h2 class="prediction-output">DOCUMENTATION </h2>
+          <p style="color: #c9c9c9"> Discover our Model Creation Journey. </p>
+          </p>
+        </div>
+
+        <div class="course-topic">
+          <h5> COURSE TOPIC  </h5>
+      
+          <p> 
+            Naive Bayes is a popular classification algorithm that is often used in machine learning tasks. It is based on Bayes' theorem and assumes that all features are independent of each other, which is a naive assumption but often holds up well in practice. In this case, we will implement three variants of Naive Bayes: Gaussian Naive Bayes, Multinomial Naive Bayes, and Bernoulli Naive Bayes.
+            </p>
+        </div>
+
+        <div class="data">
+          <h5> DATA  </h5>
+      
+          <p> The dataset used in this implementation is crucial for the K-Nearest Neighbor (KNN) algorithm. The dataset consists of job data that has been scraped from the Indeed website. The dataset serves as the foundation for training and evaluating the KNN model.     </p>
+          <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HcPykHEC8zY1RQ7lq8MylkApyo3fxp9aQYL133joZe8/edit?usp=sharing">
+              <button >View Dataset</button>
+          </a>
+          <br> 
+          <p>
+            The dataset used in this implementation comprises over 209 instances and includes four key features: Job_Title, Company, Experience_Required, and Salary. These features provide essential information about each job listing and serve as the basis for classifying jobs using the K-Nearest Neighbor (KNN) algorithm.
+
+          </p>
+           <p>Dataset Overview:</p>
+           <p>  > Job_Title (categorical, int)
+           <br>  > Company (categorical, string)
+           <br>  > Experience_Required (numerical, float)
+           <br>  > Salary (numerical, float)
+          </p>
+        </div>
+
+        <div class="problem-statement">
+          <h5> PROBLEM STATEMENT  </h5>
+          <p>
+            The activity's objective is to develop a machine learning model utilizing Naive Bayes classifiers to classify jobs based on features extracted through web scraping from Indeed, a prominent job search engine. The dataset encompasses relevant attributes, including job title, company name, required experience, and salary.
+            Multiple Naive Bayes classifiers, namely Gaussian, Multinomial, and Bernoulli, have been employed by the team. Each classifier assumes different data distribution characteristics and is suited for diverse types of data.
+            The focal point of the classification task is the Job_Title, while the predictive variables encompass features such as Experience_Required and Salary. The project holds great promise in constructing an effective and practical job classification system using machine learning techniques. By accurately categorizing jobs based on the provided features, the system aims to expedite the job search process for candidates and facilitate employers in identifying suitable candidates for job vacancies.
+                 
+          </p>
+        </div>
+        <div class="method-evaluation">
+          <h5> METH0D & EVALUATION  </h5>
+          <p>
+           <b>MODEL</b>  <br><br>
+           During the analysis conducted throughout the activity, it became evident that it was crucial to have a comprehensive understanding of the sequential steps involved in constructing and evaluating the Python program. <br><br>
+           Initially, we acquired a dataset by scraping information from Indeed. This dataset consisted of 209 instances and included features such as Job_Title, Company, Experience_Required, and Salary. Our primary objective was to classify jobs, with Job_Title serving as the target variable. Job_Title was divided into three classes: 1 for Junior positions, 2 for Senior positions, and 3 for Project Manager roles. In our predictive modeling, we focused on utilizing Experience_Required and Salary as the predictor variables, while excluding the Company column from consideration.<br><br>
+           In the process of building our model, we commenced by reading the dataset. Subsequently, we dropped the Company column from our analysis since it held no relevance in predicting the job titles. In fact, including this column as a predictor would have likely adversely affected the performance of our classifier.<br><br>
+           Moving forward, we partitioned the dataset into training and testing sets, with the training set comprising 75% of the data and the testing set accounting for the remaining 25%. With the dataset divided, we proceeded to construct Naive Bayes classifiers, specifically Gaussian, MultiNomial, and Bernoulli. Additionally, we implemented data standardization and hyperparameter tuning techniques. Once the classifier was constructed, we serialized it using pickle, thereby transforming it into a binary format that could be stored or transmitted, and saved it as our model.                     </p>
+          <a target="_blank" href="https://drive.google.com/file/d/1euSVJmqM7HNPahFlp9sVoiqPshzh77gS/view?usp=sharing">
+              <button >View Model</button>
+          </a>
+          <p>
+            <b>FLASK</b> <br><br>
+            We start by loading the saved model for Gaussian Naive Bayes using the pickle.load function. The model is stored in the file 'indeed_gnb_model.pkl', and we assign it to the variable gnb_model. This model was previously trained using the Gaussian Naive Bayes algorithm. <br><br>
+            Next, we define a route /gaussianNB using the @app.route decorator. This route can handle both GET and POST requests.<br><br>
+            Inside the gaussianNB function, we check if the request method is POST. If it is, we extract the form data sent with the request, specifically the values of feature1 and feature2. We convert these values to float and create a new sample as a NumPy array, reshaped to have one row and two columns.<br><br>
+            Using the loaded Gaussian Naive Bayes model (gnb_model), we make a prediction on the new sample by calling the predict method. The predicted class label is stored in y_pred.<br><br>
+            Based on the predicted class label, we assign a corresponding text label to prediction_text. If y_pred is 1, we assign 'Junior', if it is 2, we assign 'Senior', if it is 3, we assign 'Project Manager', and for any other value, we convert it to a string.<br><br>
+            Finally, if the request method is POST, we return the prediction result as a JSON response using the jsonify function. Otherwise, for GET requests, we render the template 'gaussianNB.html'.<br><br>
+            Similar steps are followed for the routes /bernoulliNB and /multinomialNB, where we load models for Bernoulli Naive Bayes and Multinomial Naive Bayes, respectively. The model files are 'indeed_bnb_model.pkl' and 'indeed_mnb_model.pkl', and the loaded models are assigned to the variables bnb_model and mnb_model, respectively. The prediction process and response generation for these routes are also similar to the explanation provided for Gaussian Naive Bayes.
+            
+            
+            
+                      </p>
+        </div>
+
+        <div class="results">
+          <h5> RESULTS & DISCUSSIONS      </h5>
+          <p>
+            Despite incorporating data standardization and hyperparameter tuning techniques, the Gaussian, MultiNomial, and Bernoulli Naive Bayes classifiers yielded accuracy scores of 52%, 36%, and 45% respectively, which can be considered relatively low. These modest accuracies can be attributed to the small size of the dataset, comprising only 209 instances. It is essential to acknowledge that the Naive Bayes algorithm assumes independence among features, which may not hold true in this context, leading to inaccuracies in the predictions. <br><br>
+            The integration of Flask successfully establishes a connection between the HTML file and the classification model, facilitating the user-friendly output of Junior, Senior, or Project Manager job titles. Our approach to model building, starting from dataset ingestion and excluding irrelevant columns to enhance classifier performance, follows a logical progression. Overall, our project serves as a commendable foundation for developing a job classification system using Python. Although there is room for improvement, we have established a solid groundwork for future enhancements.
+            
+                    </p>
+
+        </div>
+
+
+      </div>
+    </div>
+</div>
+</section>
+
+<div style="position: fixed; bottom: 0;  top: 95%; left: 50%;
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);   z-index: 9999;
+">
+
+
+   <a href="{{ url_for('gaussianNB')}}"> <button class="dot" > GAUSSIAN </button></a>
+   <a href="{{ url_for('bernoulliNB')}}"><button class="dot active-dot" > BERNOULLI</button></a>
+   <a href="{{ url_for('multinomialNB')}}"> <button class="dot"> MULTINOMIAL</button></a>
+</div>
+<script>
+  $(document).ready(function() {
+  // Intercept the form submission event
+  $('form').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the form data
+    var formData = $(this).serialize();
+
+    // Send the AJAX request
+    $.ajax({
+      url: '/bernoulliNB', // URL to send the request to
+      type: 'POST', // HTTP method
+      data: formData, // Form data
+      success: function(response) {
+        // Update the prediction result on the page
+        $('#prediction-result').text(response.prediction);
+      }
+    });
+  });
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+
+</html>

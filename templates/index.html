@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block title %}  Home {% endblock %}
+
+{% block content %}
+
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto active"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto "><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto "><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto "><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto "><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p>CodeCastAI </p>
+      <span class="typed" data-typed-items="K-Nearest Neighbor Classification, Naives
+        Bayes Classification, K-Means Clustering, Text Generation, Text Classification"></span>
+      
+        <div class="desc-container">
+        <p class="desc">Unlocking the Power of AI: CodeCastAI - Your Predictive Pathway</p>
+      </div>
+     
+        
+      <a href="#section"> <button class="campaign-button"> Get Started </button></a>
+
+
+    </div>
+  </section><!-- End Hero -->
+
+
+
+  <!-- ======= Hero Section ======= -->
+
+  <main id="main">
+
+    <!-- blog post -->
+<section class="section" id="section" style="padding-top: 100px; margin: 20px;">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-12 mb-100">
+        <article data-file="articles/b.html" data-target="article" class="article-full-width">
+          <div class="post-image">
+            <img class="img-fluid" src="/static/img/masonary-post/post-2.jpg" alt="post-thumb">
+          </div>
+          <div class="post-content">
+            <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
+              <li class="list-inline-item text-light"><i class="bi bi-code-slash"></i> &nbsp; Data Mining</li>
+            </ul>
+            <h4 class="mb-4"><a href="{{ url_for('knn_predict')}}" class="text-light">K-Nearest neighbor classification</a></h4>
+            <p class="mb-0 post-summary text-light">This section classify jobs based on data scraped from Indeed, use our K-Nearest Neighbor (KNN) model by clicking the title. The KNN algorithm is a simple and effective machine learning technique for classification problems, where the goal is to predict the class of a new sample based on the classes of its nearest neighbors in the training set.</p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('knn_predict')}}"> Continue...</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 mb-100 d-flex justify-content-center">
+        <article data-file="articles/b.html" data-target="article" class="article-full-width article-right">
+          <div class="post-image">
+            
+            <img class="img-fluid" src="/static/img/masonary-post/post-1.jpg" alt="post-thumb">
+          </div>
+          <div class="post-content">
+            <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
+              <li class="list-inline-item text-light"><i class="bi bi-code-slash"></i>  &nbsp; Data Mining</li>
+            </ul>
+            <h4 class="mb-4"><a href="{{ url_for('gaussianNB')}}" class="text-light">Naives bayes classification</a></h4>
+            <p class="mb-0 post-summary text-light">This section classify jobs based on data scraped from Indeed, use our the Naive Bayes model (Gaussian, Multinomial, Bernoulli) by clicking the title. Naive Bayes is a probabilistic algorithm commonly used for classification problems.</p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('gaussianNB')}}">Continue...</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 mb-100">
+        <article data-file="articles/b.html" data-target="article" class="article-full-width">
+          <div class="post-image">
+            <img class="img-fluid" src="/static/img/masonary-post/post-4.jpg" alt="post-thumb">
+          </div>
+          <div class="post-content">
+            <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
+              <li class="list-inline-item text-light"><i class="bi bi-code-slash"></i> &nbsp; Data Mining</li>
+            </ul>
+            <h4 class="mb-4"><a href="{{ url_for('k_means')}}" class="text-light">K-means clustering</a></h4>
+            <p class="mb-0 post-summary text-light">This section is the implementation using the data scraped from Indeed to cluster data. It is a popular clustering algorithm used to group similar data points together based on their distance to each other. Click the title above to visualize the clusters as it represent groups of jobs who share similar patterns in terms of salary and experience required.
+
+            </p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('k_means')}}">Continue...</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 mb-100 d-flex justify-content-center">
+        <article data-file="articles/b.html" data-target="article" class="article-full-width article-right">
+          <div class="post-image">
+            
+            <img class="img-fluid" src="/static/img/masonary-post/post-5.jpg" alt="post-thumb">
+          </div>
+          <div class="post-content">
+            <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
+              <li class="list-inline-item text-light"><i class="bi bi-code-slash"></i>  &nbsp; NLP</li>
+            </ul>
+            <h4 class="mb-4"><a href="{{ url_for('predict')}}" class="text-light">Text Generation</a></h4>
+            <p class="mb-0 post-summary text-light">This section is centered around the creation and application of Recurrent Neural Network (RNN) architectures for generating and predicting the next words of an input. RNN architectures applied on this activity are LSTM, BiLSTM, and GRU.</p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('predict')}}">Continue...</a>
+          </div>
+        </article>
+      </div>
+      
+      <div class="col-12 mb-100">
+        <article data-file="articles/b.html" data-target="article" class="article-full-width">
+          <div class="post-image">
+            <img class="img-fluid" src="/static/img/masonary-post/post-3.jpg" alt="post-thumb">
+          </div>
+          <div class="post-content">
+            <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
+              <li class="list-inline-item text-light"><i class="bi bi-code-slash"></i> &nbsp; NLP </li>
+            </ul>
+            <h4 class="mb-4"><a href="{{ url_for('text_classify')}}" class="text-light">Text Classification</a></h4>
+            <p class="mb-0 post-summary text-light">This section is specifically tailored to perform text classification, where its primary objective is to discern the emotional sentiment or opinion conveyed within a given text and subsequently assign it to one of two categories: positive sentiment or negative sentiment. This classification task aims to identify and categorize the expressed emotional tone in an accurate and reliable manner.
+            </p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('text_classify')}}">Continue...</a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+    
+  </div>
+</section>
+<!-- /blog post -->
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+</body>
+
+</html>

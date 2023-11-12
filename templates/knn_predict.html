@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block title %} KNN Prediction {% endblock %}
+
+{% block content %}
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index')}}" class="nav-link scrollto"><img src="/static/img/logo.png" class="img-fluid" alt="" style="max-width: 20px; "> <span style="margin-left: 7px;"> HOME </span></a></li>
+        <li><a href="{{ url_for('knn_predict')}}" class="nav-link scrollto active"><i class="bi bi-code-slash"></i> <span style="margin-left: 7px;">  K-NEAREST NEIGHBORS </span></a></li>
+        <li><a href="{{ url_for('gaussianNB')}}" class="nav-link scrollto "><i class="bi bi-layers"></i> <span style="margin-left: 7px;">   NAIVE BAYES </span></a></li>
+        <li><a href="{{ url_for('k_means')}}" class="nav-link scrollto"><i class="bi bi-diagram-2"></i> <span style="margin-left: 7px;">  K-MEANS </span></a></li>
+        <li><a href="{{ url_for('predict')}}" class="nav-link scrollto "><i class="bi bi-cpu"></i> <span style="margin-left: 7px;">  TEXT GENERATION </span></a></li>
+        <li><a href="{{ url_for('text_classify')}}" class="nav-link scrollto "><i class="bi bi-hdd-network"></i> <span style="margin-left: 7px;">  TEXT CLASSIFICATION </span></a></li>
+        <li><a href="{{ url_for('team')}}" class="nav-link scrollto "><i class="bi bi-people"></i> <span style="margin-left: 7px;">  TEAM </span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+  
+<section>  
+  <div id="video-container">
+  <video autoplay muted loop>
+    <source src="/static/img/hihi.mp4" type="video/mp4">
+    <!-- Add additional source tags for different video formats -->
+  </video>
+</div>
+
+
+</section>
+
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <img src="/static/img/logo.png" height="80px" alt="">
+      <p> K-nearest Neighbor </p>
+        <div class="desc-container">
+        <p class="desc">K-Nearest Neighbors (KNN) is a supervised machine learning algorithm that can be used for classification and regression tasks. It operates based on the principle that similar data points tend to belong to the same class or have similar output values. 
+        </p>
+        
+      </div>
+      <a href="#knn-section"> <button class="campaign-button"> CLASSIFY </button></a>
+
+     
+        
+
+
+    </div>
+  </section><!-- End Hero -->
+
+<section id="knn-section" class="knn-section">
+<div id="knn-container" class="container knn-container col-lg-7 col-md-7 col-sm-10 col-11 p-5 pb-0">
+
+<img src="/static/img/logo.png" height="100px" alt="" style=" display: block; margin-left: auto; margin-right: auto;">
+  
+    <div class="section-title ">
+      <h2 class="prediction-output">KNN Job Classifier</h2>
+      <p style="color: #c9c9c9"> Predict your job using our KNN model.
+
+ </p>
+      </p>
+      <br><br><br>
+
+      <p id="prediction-result" style="font-size: 24px;"></p><!-- REsult -->
+
+
+    </div>
+
+    <div class="row">
+    
+      <div class="col-lg-12 col-md-12 col-sm-12 p-0  content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div id="form-input-container">
+
+          <form action="/knn_predict" method="POST" class="form flex-column ">
+                  
+              <div class="mb-3 col-12 col-lg-6 col-md-10" style="display: block; margin: 0 auto; text-align: center;">
+                  <input style="text-align: center;" type="text" name="feature1" class="form-control text-light" id="feature1" required>
+                  <label for="feature1" class="form-label">Year/s of Experience</label>
+
+                </div>
+
+                <div class="mb-3 col-12 col-lg-6 col-md-10" style="display: block; margin: 0 auto; text-align: center;">
+                  <input style="text-align: center;"  type="text" name="feature2" class="form-control text-light" id="feature2" required>
+
+                  <label for="feature2" class="form-label">Salary</label>
+                </div>
+   
+              <input class="submit" type="submit" value="PREDICT">
+
+
+            </form>
+            <hr style="width: 90%; display: block; margin-left: auto; margin-right: auto; border: 1px solid #106eea">
+
+        </div>
+
+        <div class="section-title ">
+          <h2 class="prediction-output">DOCUMENTATION </h2>
+          <p style="color: #c9c9c9"> Discover our Model Creation Journey. </p>
+          </p>
+        </div>
+    
+    
+          <div class="course-topic">
+            <h5> COURSE TOPIC  </h5>
+        
+            <p> The activity focuses on implementing the K-Nearest Neighbor (KNN) algorithm using job data scraped from the Indeed website. The objective is to classify jobs based on certain features or attributes.</p>
+          </div>
+
+          <div class="data">
+            <h5> DATA  </h5>
+        
+            <p> The dataset used in this implementation is crucial for the K-Nearest Neighbor (KNN) algorithm. The dataset consists of job data that has been scraped from the Indeed website. The dataset serves as the foundation for training and evaluating the KNN model.     </p>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HcPykHEC8zY1RQ7lq8MylkApyo3fxp9aQYL133joZe8/edit?usp=sharing">
+                <button >View Dataset</button>
+            </a>
+            <br> 
+            <p>
+              The dataset used in this implementation comprises over 209 instances and includes four key features: Job_Title, Company, Experience_Required, and Salary. These features provide essential information about each job listing and serve as the basis for classifying jobs using the K-Nearest Neighbor (KNN) algorithm.
+
+            </p>
+             <p>Dataset Overview:</p>
+             <p>  > Job_Title (categorical, int)
+             <br>  > Company (categorical, string)
+             <br>  > Experience_Required (numerical, float)
+             <br>  > Salary (numerical, float)
+            </p>
+          </div>
+
+          <div class="problem-statement">
+            <h5> PROBLEM STATEMENT  </h5>
+            <p>
+              This activity focuses on the development of a machine learning model utilizing the K-Nearest Neighbor (KNN) algorithm for the classification of jobs. The dataset employed in this endeavor was obtained through web scraping from Indeed, a prominent job search engine. The primary objective is to predict the job category, represented by the Job_Title variable, based on the predictive variables including Experience_Required and Salary. <br> <br>
+              By leveraging the KNN algorithm, which is a simple yet effective classification technique, this project aims to create a practical and valuable job classification system. The Job_Title serves as the target variable, while features such as Experience_Required and Salary act as predictors. The model's purpose is to accurately categorize jobs based on these features, assisting job seekers in efficiently identifying relevant job opportunities and aiding employers in finding suitable candidates for their job openings.<br> <br>
+              As a developer, it is crucial to emphasize the significance of data quality and preprocessing. Data scraping introduces potential challenges, such as missing values, inconsistencies, or noisy data. Careful data cleaning and preprocessing techniques should be employed to ensure the reliability and integrity of the dataset. Additionally, categorical variables like Job_Title and Company may require appropriate encoding methods, such as one-hot encoding, to transform them into a numerical format suitable for the KNN algorithm.
+            
+            </p>
+          </div>
+
+          <div class="method-evaluation">
+            <h5> METH0D & EVALUATION  </h5>
+            <p>
+             <b>MODEL</b>  <br><br>
+            The code begins by importing the necessary libraries and reading the dataset from a CSV file. The dataset is preprocessed by removing the "Company" feature, as it is not relevant for the classification task.<br> <br>
+Next, the dataset is divided into training and testing sets using the train_test_split function from the scikit-learn library. The K-Nearest Neighbor (KNN) algorithm is then applied to the training set using the KNeighborsClassifier class. The model is trained by fitting it to the training data.<br> <br>
+Once the model is trained, predictions are made on the testing set using the predict method of the classifier. The accuracy of the model is computed using the accuracy_score function, which compares the predicted labels with the actual labels from the testing set. Additionally, the classification report provides detailed metrics such as precision, recall, and F1-score for each class, giving a comprehensive evaluation of the model's performance.<br> <br>
+Furthermore, the confusion matrix is calculated using the confusion_matrix function, which provides insights into the number of true positives, true negatives, false positives, and false negatives. This matrix helps assess the model's ability to correctly classify instances across different classes.<br> <br>
+To facilitate future use of the trained model, it is saved to a binary file named 'knn_model.pkl' using the pickle module. This allows for easy loading and prediction on new samples. As demonstrated in the code, user input can be taken for new job samples, and the loaded model can predict their respective labels.<br> <br>
+In summary, the provided code implements a job classification model using the K-Nearest Neighbor algorithm. The model's performance is evaluated using metrics such as accuracy, classification report, and confusion matrix. Saving the trained model enables its reuse for making predictions on new job samples. This method serves as a valuable starting point for researchers interested in developing and evaluating job classification systems using machine learning techniques. <br>
+            </p>
+            <a target="_blank" href="https://colab.research.google.com/drive/16D37gHYqivsZI1JzLtcVtX9tX1kHQlQ1?usp=sharing">
+                <button >View Model</button>
+            </a>
+            <p>
+              <b>FLASK</b> <br><br>
+              The implementation of a Flask was also applied. The implementation shows the Flask route for making predictions using the saved K-Nearest Neighbor (KNN) model. The route, '/knn_predict', handles both GET and POST requests. <br><br>
+In the POST request, the form data from the request is retrieved, containing the values for 'feature1' and 'feature2'. These features represent the input attributes for the prediction task. The values are converted to float type and used to create a new sample as a numpy array. <br><br>
+Using the loaded KNN model, the new sample is passed through the model's predict function to obtain the predicted label. The predicted label is then mapped to its corresponding job title category, such as 'Junior', 'Senior', or 'Project Manager', based on the conditional statements. <br><br>
+The prediction result is returned as JSON, encapsulated in a dictionary with the key 'prediction'. This enables easy retrieval and interpretation of the prediction in the frontend. <br><br>
+For the GET request, the 'knn_predict.html' template is rendered, allowing users to input the values for 'feature1' and 'feature2' through a user-friendly interface. <br><br>
+The code implementation appears to follow the recommended practices for using Flask to create a route for making predictions with a saved KNN model. The code demonstrates proper handling of POST and GET requests, retrieving form data, making predictions using the loaded model, and returning the prediction result in a suitable format. However, it is important to ensure that the model file 'model.pkl' exists and is correctly saved in the specified location for successful loading.
+
+            </p>
+          </div>
+          <div class="results">
+            <h5> RESULTS & DISCUSSIONS      </h5>
+            <p>
+              The K-Nearest Neighbor (KNN) model achieved an accuracy of 64.29% in predicting job titles based on the given dataset. Although this accuracy may appear relatively low, it can be attributed to the limited size of the dataset, which comprises only 209 instances. With a larger and more diverse dataset, the model's accuracy could potentially improve. <br><br>
+              The implementation of Flask, a web framework, successfully connects the HTML file and the classification model, enabling the system's functionality. The user interface is designed to be user-friendly, providing clear and appropriate outputs in the form of job titles categorized as Junior, Senior, or Project Manager. This integration of frontend and backend components demonstrates the group's competence in building an interactive job classification system. <br><br>
+              The group followed a logical approach in model development, starting with data preprocessing by reading the dataset and removing irrelevant columns. This preprocessing step helps enhance the classifier's performance by eliminating unnecessary information. The chosen algorithm, KNN, is a suitable choice for this classification task. <br><br>
+              The current implementation of the job classification system using the K-Nearest Neighbor algorithm is based on a dataset obtained from Indeed, which has limitations in terms of its complexity and domain specificity. However, envisioning the use of a more comprehensive and domain-specific dataset highlights the potential impact it could have on the accuracy and effectiveness of the system. With access to richer job-related features and industry-specific attributes, the system could offer personalized job recommendations for job seekers and improve candidate recommendations for employers. By considering industry nuances and requirements, the system could provide more targeted and precise job classifications. As a researcher, incorporating such comprehensive datasets in future iterations of the project would be crucial in advancing the field of job classification and its practical applications. <br><br>
+              This implementation serves as a solid foundation for building a job classification system using Python. While there are opportunities for further improvement, such as acquiring a more comprehensive dataset or exploring other machine learning algorithms, the group's approach showcases their understanding of the underlying concepts and their ability to create a functional system. Continued development and refinement can lead to an even more effective job classification system in the future.
+          </p>
+       
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+<script>
+  $(document).ready(function() {
+  // Intercept the form submission event
+  $('form').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the form data
+    var formData = $(this).serialize();
+
+    // Send the AJAX request
+    $.ajax({
+      url: '/knn_predict', // URL to send the request to
+      type: 'POST', // HTTP method
+      data: formData, // Form data
+      success: function(response) {
+        // Update the prediction result on the page
+        $('#prediction-result').text(response.prediction);
+      }
+    });
+  });
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+{% endblock %}
+
+</body>
+
+</html>
