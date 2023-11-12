@@ -5,6 +5,5 @@ pickle-mixin
 pandas
 matplotlib
 tensorflow
-re
 json
 gunicorn
